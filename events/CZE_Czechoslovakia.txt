@@ -3249,9 +3249,27 @@ country_event = {
 	
 	option = {
 		name = CZE.406.a
-		add_timed_idea = { idea = CZE_constitutional_reforms days = 365 }
+		trigger = {
+			CZE = {
+				any_owned_state = {
+					is_claimed_by = PREV.PREV
+				}
+			}
+		}
 	}
 
+	option = {
+		name = CZE.406.b
+		trigger = {
+			CZE = {
+				any_owned_state = {
+					NOT = {
+						is_claimed_by = PREV.PREV
+					}
+				}
+			}
+		}
+	}
 }
 
 ############################################## LITTLE PRESS LAW DECISION

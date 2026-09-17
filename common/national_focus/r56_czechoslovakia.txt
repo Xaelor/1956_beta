@@ -5009,15 +5009,18 @@ focus_tree = {
 		relative_position_id = CZE_sokol_movement
 		cost = 10
 
-		ai_will_do = { factor = 2	}
+		ai_will_do = { factor = 2 }
 
 		completion_reward = {
-			set_country_flag = CZE_constitutional_reforms_flag		#No need to tell the player they're getting an event via this tooltip, when the game already has one.
-			country_event = { id = CZE.406 days = 1 }
-			custom_effect_tooltip = report_reward
-			#custom_effect_tooltip = CZE_democratic_reforms_tooltip_reward
-			effect_tooltip = {
-				add_timed_idea = { idea = CZE_constitutional_reforms days = 365 }
+			set_country_flag = CZE_constitutional_reforms_flag
+			add_timed_idea = {
+				idea = CZE_constitutional_reforms
+				days = 365
+			}
+			hidden_effect = {
+				every_neighbor_country = {
+					country_event = { id = CZE.406 hours = 3 }
+				}
 			}
 		}
 	}

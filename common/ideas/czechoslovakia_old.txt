@@ -663,7 +663,7 @@ ideas = {
 			}
 		}
 
-		CZE_constitutional_reforms = { ###### ADDED VIA EVENT CZE.406
+		CZE_constitutional_reforms = { ###### ADDED VIA FOCUS CZE_democratic_reforms
 			
 			allowed = { always = no }
 
