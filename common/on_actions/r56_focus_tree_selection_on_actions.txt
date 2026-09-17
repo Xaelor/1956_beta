@@ -2596,12 +2596,6 @@ on_actions = {
 					#}
 				}
 				else = {
-					set_power_balance = {
-						id = KMT_main_bop
-						left_side = KMT_party_beurocracy
-						right_Side = KMT_chaing_kai_shek
-						set_value = 0.1
-					}
 					IF = {
 						limit = {
 							has_dlc = "No Step Back"
@@ -2610,6 +2604,7 @@ on_actions = {
 							CHI_whampoa_military_academy_spirit
 						}
 					}
+					activate_mission = KMT_finish_the_consitutional_draft
 					add_dynamic_modifier = { modifier = KMT_china_eco_dynamic_modifier }
 					set_variable = { KMT_eco_cons = 0.1 }
 					set_variable = { KMT_eco_cons_visual = 10}
@@ -2629,8 +2624,29 @@ on_actions = {
 					set_variable = { KMT_c = 0.01 }
 					set_variable = { KMT_f = 0.01 }
 					set_variable = { KMT_stab = -0.1 }
+					set_variable = { KMT_drift = 0.1 }
 					set_variable = { KMT_consumer_change_var = 1 }
 					add_dynamic_modifier = { modifier = KMT_the_kuomintang_natl_revolution }
+					set_party_name = {
+						ideology = fascism
+						name = KMT_extremists
+						long_name = KMT_extremists_long
+					}
+					set_party_name = {
+						ideology = democratic
+						name = KMT_constitutionalists
+						long_name = KMT_constitutionalists_long
+					}
+					set_party_name = {
+						ideology = neutrality
+						name = KMT_chiangists
+						long_name = KMT_chiangists_long
+					}
+					set_party_name = {
+						ideology = communism
+						name = KMT_leftists
+						long_name = KMT_leftists_long
+					}
 				}
 			}
 
@@ -2726,6 +2742,55 @@ on_actions = {
 					set_variable = { seri_thai_contats_democratic_drift = 0.1 }
 					set_variable = { idea_SIA_printing_money_monthly_change = 0.01 }
 					set_variable = { idea_SIA_printing_money_monthly_change_max = 0.45 }
+
+					set_variable = { SIA_army_of_siam_production_speed_arms_factory_factor = 0.1 }
+					set_variable = { SIA_army_of_siam_supply_consumption_factor = -0.1 }
+					set_variable = { SIA_army_of_siam_supply_node_range = 0.15 }
+
+					every_state = {
+						limit = {
+							OR = {
+								state = 924 # Champasak
+								state = 670 # Laos
+								state = 671 # Hanoi
+								state = 927 # South Annam
+								state = 928 # North Annam
+								state = 926 # Luang Prabang
+								state = 286 # Cochinchina
+								state = 741 # Cambodia
+								state = 925 # Batambang
+							}
+						}
+					
+						add_to_array = {
+							array = ROOT.indochina_states
+							value = THIS
+						}
+					}
+					every_state = {
+						limit = {
+							OR = {
+								state = 1020 # Tenasserim
+								state = 999 # Federated Shan States
+								state = 993 # Kengtung
+								state = 914 # Perlis-Kedah
+								state = 960 # Kelantan-Terengganu
+								state = 1129 # Perak
+							}
+						}
+
+						add_to_array = {
+							array = ROOT.malaysia_burma_states
+							value = THIS
+						}
+					}
+
+
+					every_core_state = {
+						add_to_array = {
+							array = ROOT.core_states_at_game_start
+						}
+					}
 				}
 			}
 
@@ -2742,9 +2807,10 @@ on_actions = {
 				1128 = { set_resistance = 75 set_compliance = 2 } # Atjeh
 				974 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # Medan and Riouw
 				1127 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # Bali
-				667 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # West Nusa Tenggara
+				667 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # Nusa Tenggara
 				1142 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # Dutch Timor
 				668 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # The Moluccas
+				673 = { remove_core_of = INS start_resistance = yes set_resistance = 0 set_compliance = 60 } # South Sulawesi
 
 				set_global_flag = ins_dlc_focus_tree
 				INS = {
@@ -2752,6 +2818,156 @@ on_actions = {
 					every_core_state = { add_to_array = { array = default_core_states value = PREV } }
 					every_owned_state = { limit = { NOT = { is_core_of = INS } } add_to_array = { array = default_noncore_states value = PREV } }
 					load_focus_tree = indonesia_focus
+
+					add_country_leader_role = {
+						character = INS_bonifacius_cornelis_de_jonge
+						country_leader = {
+							desc = INS_bonifacius_cornelis_de_jonge_desc
+							expire = "1965.1.1"
+							ideology = conservatism
+							traits = {
+								INS_staunch_imperialist
+							}
+						}
+						promote_leader = yes
+					}
+					add_country_leader_role = {
+						character = INS_tjarda_van_starkenborgh_stachouwer
+						country_leader = {
+							desc = INS_tjarda_van_starkenborgh_stachouwer_desc
+							expire = "1965.1.1"
+							ideology = conservatism
+							traits = {
+								TAOG_liberal_colonial_leader
+							}
+						}
+					}
+
+					INS_bonifacius_cornelis_de_jonge = {
+						remove_country_leader_trait = {
+							ideology = colonial_government
+							trait = committed_colonialist 
+						}
+						add_country_leader_trait = {
+							ideology = colonial_government
+							trait = INS_staunch_imperialist
+						}
+					}
+					INS_dick_de_hoog = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_strict_loyalist
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = indies_rep_hoog
+						}
+					}
+					INS_gerardus_johannes_berenschot = {
+						set_nationality = HOL
+					}
+					INS_hok_hoei_kan = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_chinese_representative
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = indies_rep_hoei_kan
+						}
+					}
+					INS_husni_thamrin = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_independence_activist
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = indies_rep_thamrin
+						}
+					}
+					INS_musso = {
+						add_trait = {
+							slot = political_advisor
+							trait = INS_returned_from_moscow
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = communist_revolutionary
+						}
+					}
+					INS_oto_iskandar_di_nata = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_representative_of_welfare
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = pasundan_representative
+						}
+					}
+					INS_samuel_ratulangi = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_minister_of_justice
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = minahasan_autonomist
+						}
+					}
+					INS_supomo = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_minister_of_justice
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = statism_adept
+						}
+					}
+					INS_soetardjo_kartohadikusomo = {
+						add_trait = {
+							slot = political_advisor
+							trait = TAOG_collaborationist
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = leader_of_native_administrators
+						}
+					}
+					INS_tan_malaka = {
+						add_trait = {
+							slot = political_advisor
+							trait = INS_revolutionary_strategist
+						}
+						remove_trait = {
+							slot = political_advisor
+							trait = marxist_philosopher
+						}
+					}
+					INS_tjarda_van_starkenborgh_stachouwer = {
+						remove_country_leader_trait = {
+							ideology = colonial_government
+							trait = domestic_administrator 
+						}
+						add_country_leader_trait = {
+							ideology = colonial_government
+							trait = TAOG_liberal_colonial_leader
+						}
+					}
+
+					set_party_name = {
+						ideology = democratic
+						long_name = INS_neutrality_party_long
+						name = INS_neutrality_volksraad_gg_party
+					}
+					set_party_name = {
+						ideology = neutrality
+						long_name = INS_neutrality_volksraad_gg_party_long
+						name = INS_neutrality_volksraad_gg_party
+					}
+
 					remove_ideas = {
 						INS_army_idea
 						INS_economy_idea

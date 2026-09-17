@@ -40,7 +40,7 @@
  SIA_FOCUS_TREE_SELECTION:0 "@SIA Siam"
  CHI_FOCUS_TREE_SELECTION:0 "@CHI China"
  CZE_FOCUS_TREE_SELECTION:0 "@CZE Czechoslovakia"
- INS_FOCUS_TREE_SELECTION:0 "@INS Indonesia"
+ INS_FOCUS_TREE_SELECTION:0 "@INS Dutch East Indies"
  
  ###---> AI Behavior <><> <><> <><>
  RULE_GROUP_AI_BEHAVIOR:0 "AI Behavior"

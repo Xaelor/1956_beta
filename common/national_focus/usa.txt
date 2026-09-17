@@ -318,6 +318,7 @@ focus_tree = {
 	
 	focus = {
 		id = USA_democratic_socialism
+		text = USA_democratic_socialism_r56	#must not override the countryname of demsoc USA
 		icon = GFX_goal_generic_red_freedom
 		x = -1
 		y = 1
@@ -7718,6 +7719,9 @@ focus_tree = {
 
 		available = {
 			fascism > 0.2
+			NOT = {
+				has_global_flag = USA_civil_war_over_flag # wouldn't make sense to do that afterwards.
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_MILITARY_EQUIPMENT FOCUS_FILTER_STABILITY}

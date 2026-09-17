@@ -406,20 +406,11 @@ form_gran_colombia_category = {
 				original_tag = ECU
 				original_tag = COL
 				original_tag = VEN
-				original_tag = PRU
 				original_tag = CRC
 			}
 		}
 
 		available = {
-			#if = {
-			#	limit = {
-			#		tag = PRU
-			#	}
-			#	NOT = {
-			#		has_completed_focus = PRU_incaism
-			#	}
-			#}
 			OR = {
 				is_subject = no
 				is_subject_of = HON
@@ -7802,6 +7793,126 @@ form_arabia_category = {
 
 form_malayan_confederation_category = {
 
+	unite_malaya = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = INS
+				original_tag = JVA
+				original_tag = MAL
+				original_tag = SNG
+				original_tag = KUT
+				original_tag = POK
+				original_tag = BRN
+				original_tag = SAR
+				original_tag = ATJ
+				original_tag = SSI
+				original_tag = MLK
+				original_tag = TNE
+				original_tag = TML
+				original_tag = WPG
+			}
+		}
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 960
+				state = 914
+				state = 1129
+				state = 915
+				state = 1130
+				state = 951
+				state = 336
+				state = 724
+			}
+		}
+
+		available = {
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = form_majapahit_malaya_required_states_tt
+				controls_state = 960
+				controls_state = 914
+				controls_state = 1129
+				controls_state = 915
+				controls_state = 1130
+				controls_state = 951
+				controls_state = 336
+				controls_state = 724
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = MAL
+				AND = {
+					OR = {
+						original_tag = INS
+						original_tag = JVA
+						original_tag = KUT
+						original_tag = POK
+						original_tag = BRN
+						original_tag = SAR
+						original_tag = SAB
+						original_tag = GOW
+						original_tag = MNH
+						original_tag = ATJ
+						original_tag = SSI
+						original_tag = SNG
+						original_tag = TNE
+						original_tag = MLK
+						original_tag = TML
+						original_tag = WPG
+					}
+					has_global_flag = form_majapahit_empire_flag
+				}
+			}
+		}
+
+		complete_effect = {
+			960 = { add_core_of = ROOT }
+			914 = { add_core_of = ROOT }
+			1129 = { add_core_of = ROOT }
+			915 = { add_core_of = ROOT }
+			1130 = { add_core_of = ROOT }
+			951 = { add_core_of = ROOT }
+			336 = { add_core_of = ROOT }
+			909 = { add_core_of = ROOT }
+			724 = {
+				add_core_of = ROOT
+				set_state_name = MAL_STATE_724
+			}
+			set_province_name = {
+				id = 12201
+				name = MAL_VICTORY_POINTS_12201
+			}
+			set_province_name = {
+				id = 7236
+				name = MAL_VICTORY_POINTS_7236
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							original_tag = MAL
+							original_tag = INS
+							original_tag = SNG
+							original_tag = SSI
+							original_tag = BRN
+						}
+					}
+				}
+				add_stability = -0.075
+			}
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
 	form_malayan_confederation = {
 
 		icon = generic_form_nation
@@ -7814,11 +7925,108 @@ form_malayan_confederation_category = {
 				original_tag = SNG
 				original_tag = SAR
 				original_tag = BRN
+				original_tag = SAB
+				original_tag = ATJ
+				original_tag = SSI
+				original_tag = JVA
+				original_tag = KUT
+				original_tag = POK
+				original_tag = GOW
+				original_tag = MNH
+				original_tag = BLI
+				original_tag = EIS
+				original_tag = TML
+				original_tag = MLK
+				original_tag = TNE
+				original_tag = WPG
+			}
+		}
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 974
+				state = 1128
+				state = 1135
+				state = 672
+				state = 335
+				state = 1126
+				state = 976
+				state = 446
+				state = 1143
+				state = 667
+				state = 1127
+				state = 1142
+				state = 978
+				state = 334
+				state = 977
+				state = 673
+				state = 975
+				state = 668
+				state = 738
+				state = 909
+				state = 333 #Sarawak
+				state = 1131
+				state = 916 #Sabah
+				state = 951
+				state = 915
+				state = 1129
+				state = 1130
+				state = 960
+				state = 914
+				state = 1014 #Brunei
+				state = 627
+				state = 628
+				state = 626
+				state = 625
+				state = 624
+				state = 623
+				state = 327
+				state = 1110
+				state = 1109
+				state = 1108
 			}
 		}
 
 		available = {
 			is_subject = no
+			if = {
+				limit = {
+					OR = {
+						original_tag = ATJ
+						original_tag = SSI
+					}
+				}
+				has_country_flag = hello_i_am_sumatra_now
+
+				else_if = {
+					limit = {
+						OR = {
+							original_tag = KUT
+							original_tag = POK
+							original_tag = SAR
+							original_tag = SAB
+							original_tag = BRN
+						}
+					}
+					has_country_flag = hello_i_am_borneo_will_you_be_my_friend
+				}
+
+				else_if = {
+					limit = {
+						OR = {
+							original_tag = TML
+							original_tag = WPG
+							original_tag = MLK
+							original_tag = TNE
+							original_tag = GOW
+							original_tag = MNH
+							original_tag = EIS
+							original_tag = BLI
+						}
+					}
+					has_country_flag = hello_i_am_indonesia_but_eastern
+				}
+			}
 			# Dutch East Indies
 			custom_trigger_tooltip = {
 				tooltip = form_malayan_confederation_nei_required_states_tt
@@ -7836,12 +8044,9 @@ form_malayan_confederation_category = {
 				controls_state = 1142
 				controls_state = 978
 				controls_state = 334
-				controls_state = 977
 				controls_state = 673
 				controls_state = 975
 				controls_state = 668
-				controls_state = 669
-				controls_state = 1137
 				controls_state = 738
 				controls_state = 909
 			}
@@ -7851,7 +8056,6 @@ form_malayan_confederation_category = {
 				controls_state = 333 #Sarawak
 				controls_state = 1131
 				controls_state = 916 #Sabah
-				controls_state = 336
 				controls_state = 951
 				controls_state = 915
 				controls_state = 1129
@@ -7884,6 +8088,19 @@ form_malayan_confederation_category = {
 				original_tag = SNG
 				original_tag = SAR
 				original_tag = BRN
+				original_tag = ATJ
+				original_tag = SSI
+				original_tag = JVA
+				original_tag = KUT
+				original_tag = POK
+				original_tag = GOW
+				original_tag = MNH
+				original_tag = BLI
+				original_tag = EIS
+				original_tag = TML
+				original_tag = MLK
+				original_tag = TNE
+				original_tag = WPG
 			}
 			NOT = { has_global_flag = form_malayan_confederation_flag }
 		}
@@ -7903,6 +8120,19 @@ form_malayan_confederation_category = {
 									has_nationality = SNG
 									has_nationality = SAR
 									has_nationality = BRN
+									has_nationality = ATJ
+									has_nationality = SSI
+									has_nationality = JVA
+									has_nationality = KUT
+									has_nationality = POK
+									has_nationality = GOW
+									has_nationality = MNH
+									has_nationality = BLI
+									has_nationality = EIS
+									has_nationality = TML
+									has_nationality = MLK
+									has_nationality = TNE
+									has_nationality = WPG
 								}
                                 NOT = {
                                     has_nationality = ROOT
@@ -7946,8 +8176,6 @@ form_malayan_confederation_category = {
 								state = 673
 								state = 975
 								state = 668
-								state = 669
-								state = 1137
 								state = 738
 								state = 909
 								state = 721
@@ -7999,7 +8227,6 @@ form_malayan_confederation_category = {
 								state = 1131
 								state = 916	#Sabah
 								state = 336
-								state = 336
 								state = 951
 								state = 915
 								state = 1129
@@ -8045,8 +8272,11 @@ form_malayan_confederation_category = {
 				news_event = { id = wtt_news.68 hours = 6 }
 				set_global_flag = form_malayan_confederation_flag
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = generic_recent_political_unification
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = generic_recent_army_unification
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_ideas = generic_recent_economic_unification				
 		}
 
@@ -8060,6 +8290,387 @@ form_malayan_confederation_category = {
 	}
 }
 
+form_maphilindo_category = {
+	form_maphilindo = {
+		icon = generic_form_nation
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 672
+				state = 335
+				state = 334
+				state = 667
+				state = 673
+				state = 668
+				#state = 667	#R56 listed again
+				state = 738
+				state = 669
+				state = 1130	#R56 Klang Valley, from 336
+				state = 333
+				state = 1014	#R56 Brunei, from 1023
+				state = 916		#R56 Sabah, from 1024
+				state = 977		#R56 Inner Borneo, from 1022
+				state = 623
+				state = 327
+				state = 624
+				state = 626
+				state = 628
+				state = 625
+				state = 627
+				state = 336		#R56 Singapore, from 1021
+				#state = 1022	#R56 listed again
+				state = 1108	#R56 Zamboanga, from 1025
+				state = 1109	#R56 Northern Mindanao, from 1026
+				state = 1110	#R56 Bataan, from 1027
+				state = 1131	#R56 Limbang, from 1059
+				state = 951		#R56 Johor, from 1060
+				state = 915 	#R56 Pahang, from 1063
+				state = 960 	#R56 Kelantan, from 1062
+				state = 914 	#R56 Kedah, from 1061
+				#state = 1065 	#R56 Penang, turned into Mataram
+				state = 1129 	#R56 Perak, from 1064
+
+				state = 974		#R56 East Sumatra, hasn't added in Vanilla
+				state = 1128 	#R56 Aceh
+				state = 1135 	#R56 West Sumatra
+				state = 1126 	#R56 Batavia
+				state = 446 	#R56 East Java
+				state = 1127 	#R56 Bali 
+				state = 1142 	#R56 Dutch Timor
+				state = 978 	#R56 West Kalimantan
+				state = 975		#R56 North Sulawesi
+				state = 1137 	#R56 Southwest Papua
+
+				state = 909  	#R56 Riau Islands, R56 exclusive state
+				state = 976 	#R56 Central Java, R56 exclusive state
+				state = 1143 	#R56 Mataram, R56 exclusive state
+			}
+		}
+
+		available = {
+			# Dutch East Indies
+			custom_trigger_tooltip = {
+				tooltip = form_majapahit_nei_required_states_tt
+				controls_state = 672
+				controls_state = 335
+				controls_state = 334
+				controls_state = 667
+				controls_state = 673
+				controls_state = 668
+				#controls_state = 667 #R56 listed again
+				controls_state = 738
+				controls_state = 669
+
+				controls_state = 974	#R56, hasn't added in Vanilla
+				controls_state = 1128
+				controls_state = 1135
+				controls_state = 1126	
+				controls_state = 446
+				controls_state = 1127
+				controls_state = 1142
+				controls_state = 978
+				controls_state = 975
+				controls_state = 1137
+
+				controls_state = 909 	#R56 exclusive state
+				controls_state = 976
+				controls_state = 1143
+			}
+			# British Malaya
+			custom_trigger_tooltip = {
+				tooltip = form_majapahit_malaya_required_states_tt
+				controls_state = 1130	#R56 Klang Valley, from 336
+				controls_state = 333 	#Sarawak
+				#controls_state = 336	#R56 Singapore, from 1021
+				controls_state = 1014	#R56 Brunei, from 1023
+				controls_state = 916	#R56 Sabah, from 1024
+				controls_state = 951 	#R56 Johor, from 1060
+				controls_state = 1131	#R56 Limbang, from 1059
+				controls_state = 915 	#R56 Pahang, from 1063
+				controls_state = 1129 	#R56 Perak, from 1064
+				controls_state = 960	#R56 Kelantan, from 1062
+				controls_state = 914	#R56 Kedah, from 1061
+			}
+			# Philippines
+			custom_trigger_tooltip = {
+				tooltip = form_maphilindo_philippines_required_states_tt
+				controls_state = 623
+				controls_state = 627
+				controls_state = 624
+				controls_state = 626
+				controls_state = 628
+				controls_state = 625
+				controls_state = 327
+				controls_state = 1108	#R56 Zamboanga, from 1025
+				controls_state = 1109	#R56 Northern Mindanao, from 1026
+				controls_state = 1110	#R56 Bataan, from 1027
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+
+			IF = {
+				limit = {
+					NOT = {
+						has_cosmetic_tag = PHI_hispanic_empire_tag
+						has_cosmetic_tag = PHI_hispanic_empire_tag_war
+					}
+				}
+				set_cosmetic_tag = PHI_maphilindo_tag
+			}
+			
+			set_global_flag = PHI_maphilindo_flag
+			# Dutch East Indies
+			custom_effect_tooltip = form_country_nei_coring_states_tt
+			hidden_effect = {
+				672 = { add_core_of = ROOT }
+				335 = { add_core_of = ROOT }
+				334 = { add_core_of = ROOT }
+				667 = { add_core_of = ROOT }
+				673 = { add_core_of = ROOT }
+				668 = { add_core_of = ROOT }
+				#667 = { add_core_of = ROOT } #R56 listed again
+				738 = { add_core_of = ROOT }
+				669 = { add_core_of = ROOT }
+				977 = { add_core_of = ROOT } #R56 Inner Borneo, from 1022
+
+				974 = { add_core_of = ROOT }	#R56, hasn't added in Vanilla
+				1126 = { add_core_of = ROOT }
+				446 = { add_core_of = ROOT }
+				1127 = { add_core_of = ROOT }
+				1142 = { add_core_of = ROOT }
+				978 = { add_core_of = ROOT }
+				975 = { add_core_of = ROOT }
+				1128 = { add_core_of = ROOT }
+				1135 = { add_core_of = ROOT }
+				1137 = { add_core_of = ROOT }
+
+				909 = { add_core_of = ROOT } #R56 exclusive state
+				976 = { add_core_of = ROOT }
+				1143 = { add_core_of = ROOT }
+			}
+			# British Malaya
+			custom_effect_tooltip = form_country_malaya_coring_states_tt
+			hidden_effect = {
+				1130 = { add_core_of = ROOT }	#R56 Klang Valley, from 336
+				333 = { add_core_of = ROOT }	#Sarawak
+				336 = { add_core_of = ROOT }	#R56 Singapore, from 1021
+				1014 = { add_core_of = ROOT }	#R56 Brunei, from 1023
+				916 = { add_core_of = ROOT }	#R56 Sabah, from 1024
+				951 = { add_core_of = ROOT }	#R56 Johor, from 1060
+				1131 = { add_core_of = ROOT }	#R56 Limbang, from 1059
+				915 = { add_core_of = ROOT }	#R56 Pahang, from 1063
+				1129 = { add_core_of = ROOT }	#R56 Perak, from 1064
+				960 = { add_core_of = ROOT }	#R56 Kelantan, from 1062
+				914 = { add_core_of = ROOT }	#R56 Kedah, from 1061
+			}
+			721 = { add_core_of = ROOT }
+			711 = { add_core_of = ROOT }
+			712 = { add_core_of = ROOT }
+		}
+
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	integrate_siam = {
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 289
+				state = 868
+				state = 869
+				state = 724
+				state = 1134	#R56, hasn't added in Vanilla
+				state = 1133
+				state = 1132
+			}
+		}
+
+		on_map_mode = decision_view_only
+
+		available = {
+			controls_state = 289
+			controls_state = 868
+			controls_state = 869
+			controls_state = 724
+			controls_state = 1134	#R56, hasn't added in Vanilla
+			controls_state = 1133
+			controls_state = 1132
+		}
+
+		visible = {
+			has_global_flag = PHI_maphilindo_flag 
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 200
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = PHI_ASEAN_flag
+					}
+				}
+				set_global_flag = PHI_ASEAN_flag
+				IF = {
+					limit = {
+						NOT = {
+							has_cosmetic_tag = PHI_hispanic_empire_tag
+							has_cosmetic_tag = PHI_hispanic_empire_tag_war
+						}
+					}
+					set_cosmetic_tag = PHI_asean_tag
+				}
+				
+			}
+			289 = { add_core_of = ROOT }
+			868 = { add_core_of = ROOT }
+			869 = { add_core_of = ROOT }
+			724 = { add_core_of = ROOT }
+			1134 = { add_core_of = ROOT }	#R56, hasn't added in Vanilla
+			1133 = { add_core_of = ROOT }
+			1132 = { add_core_of = ROOT }
+		}
+	}
+
+	integrate_indochina = {
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 670
+				state = 671
+				state = 928 	#R56 Da Nang, from 1017
+				state = 927		#R56 South Annam, from 286
+				state = 741
+				state = 286 	#R56 Cochinchina, from 926
+				state = 925 	#R56 Battambang, from 1067
+				state = 924 	#R56 Champasak, from 1068
+				state = 926 	#R56 Luang Prabang, from Lan Chang 1069
+			}
+		}
+
+		on_map_mode = decision_view_only
+
+		available = {
+			controls_state = 670
+			controls_state = 671
+			controls_state = 928 	#R56 Da Nang, from 1017
+			controls_state = 927	#R56 South Annam, from 286
+			controls_state = 741
+			controls_state = 286 	#R56 Cochinchina, from 926
+			controls_state = 925 	#R56 Battambang, from 1067
+			controls_state = 924 	#R56 Champasak, from 1068
+			controls_state = 926 	#R56 Luang Prabang, from Lan Chang 1069
+		}
+
+		visible = {
+			has_global_flag = PHI_maphilindo_flag
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 200
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = PHI_ASEAN_flag
+					}
+				}
+				set_global_flag = PHI_ASEAN_flag
+				IF = {
+					limit = {
+						NOT = {
+							has_cosmetic_tag = PHI_hispanic_empire_tag
+							has_cosmetic_tag = PHI_hispanic_empire_tag_war
+						}
+					}
+					set_cosmetic_tag = PHI_asean_tag
+				}
+			}
+			670 = { add_core_of = ROOT }
+			671 = { add_core_of = ROOT }
+			928 = { add_core_of = ROOT }	#R56 Da Nang, from 1017
+			927 = { add_core_of = ROOT }	#R56 South Annam, from 286
+			741 = { add_core_of = ROOT }
+			286 = { add_core_of = ROOT }	#R56 Cochinchina, from 926
+			925 = { add_core_of = ROOT }	#R56 Battambang, from 1067
+			924 = { add_core_of = ROOT }	#R56 Champasak, from 1068
+			926 = { add_core_of = ROOT }	#R56 Luang Prabang, from Lan Chang 1069
+		}
+	}
+
+	integrate_burma = {
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1019	#R56 Northern Burma, from Sagaing 998
+				state = 288		#R56 Western Burma
+				state = 640 	#R56 Shan State, from 999
+				state = 1018	#R56 Kengtung, from 993
+				state = 1020	#R56 Tenasserim, from 994
+			}
+		}
+
+		on_map_mode = decision_view_only
+
+		available = {
+			controls_state = 1019	#R56 Northern Burma, from Sagaing 998
+			controls_state = 288	#R56 Western Burma
+			controls_state = 640	#R56 Shan State, from 999
+			controls_state = 1018	#R56 Kengtung, from 993
+			controls_state = 1020	#R56 Tenasserim, from 994
+		}
+
+		visible = {
+			has_global_flag = PHI_maphilindo_flag
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 200
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = PHI_ASEAN_flag
+					}
+				}
+				set_global_flag = PHI_ASEAN_flag
+				IF = {
+					limit = {
+						NOT = {
+							has_cosmetic_tag = PHI_hispanic_empire_tag
+							has_cosmetic_tag = PHI_hispanic_empire_tag_war
+						}
+					}
+					set_cosmetic_tag = PHI_asean_tag
+				}
+			}
+			1019 = { add_core_of = ROOT }	#R56 Northern Burma, from Sagaing 998
+			288 = { add_core_of = ROOT }	#R56 Western Burma
+			640 = { add_core_of = ROOT }	#R56 Shan State, from 999
+			1018 = { add_core_of = ROOT }	#R56 Kengtung, from 993
+			1020 = { add_core_of = ROOT }	#R56 Tenasserim, from 994
+		}
+	}
+}
+
 form_rattanakosin_kingdom_category = {
 
 	form_rattanakosin_kingdom = {
@@ -8067,7 +8678,7 @@ form_rattanakosin_kingdom_category = {
 		icon = generic_form_nation
 
 		allowed = {
-#			original_tag = SIA	#56 - Removed in favor of R56-made decisions that deal with states more individually
+			#original_tag = SIA	#56 - Removed in favor of R56-made decisions that deal with states more individually
 			always = no	#56
 		}
 
@@ -16113,7 +16724,7 @@ germany_formable_category = {
 				original_tag = BAY # Bavaria
 				original_tag = THU # Thuringia
 				original_tag = SAX # Saxony
-				original_tag = LUX # Luxembourg 
+				#original_tag = LUX # Luxembourg 
 				original_tag = DNZ # Danzig 
 				original_tag = WGR # West Germany
 				original_tag = DDR # East Germany
@@ -16251,6 +16862,18 @@ germany_formable_category = {
 				is_controlled_by = ROOT
 			}
 
+			989 = { # Ostrhineland
+				is_controlled_by = ROOT
+			}
+
+			922 = { # Frankfurt
+				is_controlled_by = ROOT
+			}
+
+			1053 = { # Saarland
+				is_controlled_by = ROOT
+			}
+
 		}
 
 		on_map_mode = decision_view_only
@@ -16275,6 +16898,9 @@ germany_formable_category = {
 				state = 54
 				state = 53
 				state = 52
+				state = 989
+				state = 922
+				state = 1053
 			}
 		}
 
@@ -16504,6 +17130,42 @@ germany_formable_category = {
 						}
 					}
 					53 = { add_core_of = ROOT }
+				}
+
+				# Ostrhineland
+				IF =  {
+					limit = {
+						NOT = {
+							989 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					989 = { add_core_of = ROOT }
+				}
+
+				# Frankfurt
+				IF =  {
+					limit = {
+						NOT = {
+							922 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					922 = { add_core_of = ROOT }
+				}
+
+				# Saarland
+				IF =  {
+					limit = {
+						NOT = {
+							1053 = {
+								is_core_of = ROOT
+							}
+						}
+					}
+					1053 = { add_core_of = ROOT }
 				}
 
 				set_global_flag = germany_reformed_flag

@@ -2025,6 +2025,10 @@ focus_tree = {
 		relative_position_id = GER_autarky_efforts
 		cost = 5
 		available = {
+			OR = {
+				has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+				has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
@@ -11936,6 +11940,7 @@ focus_tree = {
 			OR = {
 				AND = {
 					NOT = { CZE = { controls_state = 664 } }
+					NOT = { SLO = { controls_state = 664 is_subject_of = CZE } }
 					NOT = { owns_state = 664 }
 				}
 				HUN = { 
@@ -11945,8 +11950,8 @@ focus_tree = {
 						has_government = democratic
 					}
 				}
-				CZE = { is_puppet_of = GER }
-				CZE = { is_in_faction_with = GER }
+				CZE = { is_subject_of = ROOT }
+				CZE = { is_in_faction_with = ROOT }
 			}
 		}
 
@@ -43679,7 +43684,7 @@ focus_tree = {
 		relative_position_id = GER_deal_with_inner_party_opposition
 
 		mutually_exclusive = {
-			focus = GER_new_progroms
+			focus = GER_radicalize_german_nationalism
 		}
 
 		available = {
@@ -46315,7 +46320,7 @@ focus_tree = {
 
 	}
 	focus = {
-		id = GER_new_progroms
+		id = GER_radicalize_german_nationalism
 		icon = GFX_focus_generic_fascist_propaganda
 		cost = 5
 		prerequisite = { focus = GER_highten_nationalist_rethoric}
@@ -46389,7 +46394,7 @@ focus_tree = {
 				add_to_variable = { DVU_bop = -0.5 }
 				custom_effect_tooltip = GER_DVU_bop_-0.5_tt
 			}
-			add_stability = -0.05
+			add_stability = -0.1
 			add_political_power = 100
 			add_manpower = -1000
 			r56_ger_nraf_20 = yes
@@ -47268,7 +47273,7 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = { has_completed_focus = GER_new_progroms}
+			NOT = { has_completed_focus = GER_radicalize_german_nationalism}
 			OR = {
 				
 			custom_trigger_tooltip = {
@@ -47851,7 +47856,7 @@ focus_tree = {
 				limit = { has_idea = GER_president_beck_2 }
 				swap_ideas = {
 					remove_idea = GER_president_beck_2
-					add_idea = GER_wilhelm_iv
+					add_idea = GER_wilhelm_iv_weak
 				}
 			}
 			set_cosmetic_tag = GER_emp
@@ -47965,6 +47970,7 @@ focus_tree = {
 		}
 
 		available = {
+			NOT = { has_completed_focus = GER_weaken_the_presidents_power }
 			OR = {
 				has_country_leader = {
 					character = GER_alfred_hugenberg
@@ -52210,6 +52216,8 @@ focus_tree = {
 				has_government = fascism
 				has_elections = no
 			}
+			NOT = { has_government = communism }
+			NOT = { has_completed_focus = GER_spd_in_coalition }
 		}
 		completion_reward = {
 			custom_effect_tooltip = GER_move_to_restore_brest_litovsk_tt
@@ -52310,7 +52318,7 @@ focus_tree = {
 				OR = {
 					has_completed_focus = GER_an_eye_towards_the_east
 					has_completed_focus = GER_nie_wieder_ist_jetzt
-					has_completed_focus = GER_new_progroms
+					has_completed_focus = GER_radicalize_german_nationalism
 					has_completed_focus = GER_combat_the_reactionary
 					has_completed_focus = GER_claim_leadership_of_german_nationalism
 					has_completed_focus = GER_fight_fascism_in_all_its_forms
@@ -52327,7 +52335,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = GER_the_abwehrs_germany}
 				OR = {
-					has_completed_focus = GER_new_progroms
+					has_completed_focus = GER_radicalize_german_nationalism
 					has_completed_focus = GER_an_eye_towards_the_east
 					has_completed_focus = GER_combat_the_reactionary
 					has_completed_focus = GER_an_irresistable_moral_guide
@@ -52336,7 +52344,7 @@ focus_tree = {
 			else_if = {
 				limit = { has_completed_focus = GER_a_martial_state}
 				OR = {
-					has_completed_focus = GER_new_progroms
+					has_completed_focus = GER_radicalize_german_nationalism
 					has_completed_focus = GER_restore_discipline_in_the_military
 					has_completed_focus = GER_expand_liberalization_efforts
 					has_completed_focus = GER_restore_the_fahneneid
@@ -57598,7 +57606,7 @@ focus_tree = {
 		}
 		available = {
 			NOT = { 
-				
+				has_completed_focus = GER_expand_the_kaisers_duties
 			custom_trigger_tooltip = {
 				has_completed_focus = GER_dnvp_in_coalition
 				tooltip = GER_dnvp_gov_tt
@@ -57631,14 +57639,35 @@ focus_tree = {
 					has_country_flag = GER_adenauer_leadership
 				}
 			}
-			has_idea = GER_president_beck
+			OR = {
+				has_idea = GER_president_beck
+				has_idea = GER_wilhelm_iv
+			}
+			IF = {
+				limit = {
+					has_idea = GER_wilhelm_iv
+				}
+				has_completed_focus = GER_demokratieschutzgesetz
+				has_completed_focus = GER_ban_internal_operations
+			}
 		}
 		ai_will_do = {
 		}
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = GER_president_beck
-				add_idea = GER_president_beck_2
+			IF = {
+				limit = {
+					has_idea = GER_wilhelm_iv
+				}
+				swap_ideas = {
+					remove_idea = GER_wilhelm_iv
+					add_idea = GER_wilhelm_iv_weak
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = GER_president_beck
+					add_idea = GER_president_beck_2
+				}
 			}
 			set_country_flag = {
 				flag = GER_president_weakened
@@ -61250,6 +61279,14 @@ focus_tree = {
 		ai_will_do = {
 		}
 		completion_reward = {
+			hidden_effect = {
+				
+				remove_trait = {
+					character = GER_carl_friedrich_goerdeler
+					ideology = military_junta
+					trait = desperate_gambit
+				}
+			}
 			IF = {
 				limit = { has_country_flag = GER_secure_freikorps_remnants_flag}
 				country_event = new_ger.111
@@ -62405,7 +62442,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = unlock_GER_force_beck_ino_retirement_which_grants
 			effect_tooltip = {
-				remove_ideas = GER_democratic_opposition_2
+				remove_ideas = GER_becks_lingering_opposition_2
 				retire_character = GER_ludwig_beck
 			}
 		}

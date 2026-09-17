@@ -310,8 +310,8 @@ focus_tree = {
 
 			add_war_support = 0.075
 
-			custom_effect_tooltip = INS_instigate_chaos_sulawesi_tt
 			custom_effect_tooltip = newline_tt
+			custom_effect_tooltip = INS_instigate_chaos_sulawesi_tt
 		}
 	}
 	
@@ -356,8 +356,16 @@ focus_tree = {
 		search_filters = {  }
 		completion_reward = {
 			add_war_support = 0.075
+
+			custom_effect_tooltip = newline_tt
 			974 = { #Medan and Riouw
 				custom_effect_tooltip = INS_instigate_chaos_medan_tt
+			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = INS_instigate_chaos_medan }
+				}
+				custom_effect_tooltip = INS_not_instigate_chaos_medan_tt
 			}
 		}
 	}
@@ -449,7 +457,7 @@ focus_tree = {
 				bonus = 0.4
 				name = INS_tkr_supply
 				uses = 1
-				category = infantry_tech
+				category = infantry_weapons
 			}
 			add_tech_bonus = {
 				name = INS_tkr_supply
@@ -596,6 +604,7 @@ focus_tree = {
 				set_country_flag = INS_revolution_has_started
 				set_country_flag = INS_sukarno_loyalty
 				indonesia_increase_escalation_1_effect = yes
+				set_cosmetic_tag = INS_secular
 			}
 
 			custom_effect_tooltip = INS_the_declaration_of_independence_tt
@@ -647,6 +656,20 @@ focus_tree = {
 					hours = 36
 				}
 			}
+			if = {
+				limit = {
+					NOT = { has_completed_focus = INS_instigate_chaos_medan }
+				}
+				1135 = {
+					remove_core_of = INS
+					add_core_of = SSI
+				}
+				909 = {
+					remove_core_of = INS
+					add_core_of = SSI
+				}
+			}
+
 			add_dynamic_modifier = { modifier = INS_peoples_security_army }
 			set_variable = { var = INS_peoples_security_army_conscription_factor value = INS_royal_netherlands_east_indies_army_conscription_factor }
 			set_variable = { var = INS_peoples_security_army_max_command_power_mult_factor value = INS_royal_netherlands_east_indies_army_max_command_power_mult_factor }
@@ -741,28 +764,28 @@ focus_tree = {
 					division_template = "Freedom Fighter Militia" 
 					division_cap = INS_militia_cap
 				}
-			}
-			if = {
-				limit = {
-					NOT = { has_country_flag = INS_revolution_has_started }
+				if = {
+					limit = {
+						NOT = { has_country_flag = INS_revolution_has_started }
+					}
+					custom_effect_tooltip = INS_knil_tt
+					add_to_variable = { INS_royal_netherlands_east_indies_army_max_command_power_mult_factor = 0.5 tooltip = max_command_power_mult_tt }
+					add_to_variable = { INS_royal_netherlands_east_indies_army_training_time_factor = -0.1 tooltip = training_time_factor_tt }
 				}
-				custom_effect_tooltip = INS_knil_tt
-				add_to_variable = { INS_royal_netherlands_east_indies_army_max_command_power_mult_factor = 0.5 tooltip = max_command_power_mult_tt }
-				add_to_variable = { INS_royal_netherlands_east_indies_army_training_time_factor = -0.1 tooltip = training_time_factor_tt }
-			}
-			else = {
-				custom_effect_tooltip = INS_psa_tt
-				add_to_variable = { INS_peoples_security_army_max_command_power_mult_factor = 0.5 tooltip = max_command_power_mult_tt }
-				add_to_variable = { INS_peoples_security_army_training_time_factor = -0.1 tooltip = training_time_factor_tt }
-			}
-			add_corps_commander_role = {
-				character = INS_sutomo
-				traits = { INS_loyalty_to_indonesia militias_officer }
-				skill = 1
-				attack_skill = 1
-				defense_skill = 1
-				planning_skill = 1
-				logistics_skill = 1
+				else = {
+					custom_effect_tooltip = INS_psa_tt
+					add_to_variable = { INS_peoples_security_army_max_command_power_mult_factor = 0.5 tooltip = max_command_power_mult_tt }
+					add_to_variable = { INS_peoples_security_army_training_time_factor = -0.1 tooltip = training_time_factor_tt }
+				}
+				add_corps_commander_role = {
+					character = INS_sutomo
+					traits = { INS_loyalty_to_indonesia militias_officer }
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
 			}
 		}
 	}
@@ -788,7 +811,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS FOCUS_FILTER_HISTORICAL FOCUS_FILTER_POLITICAL_CHARACTER }
 		completion_reward = {
 
-			INS_kartosoewirjo = {
+			INS_sekarmaji_kartosuwiryo = {
 				add_corps_commander_role = {
 					traits = { INS_loyalty_to_indonesia }
 					skill = 2
@@ -1077,7 +1100,7 @@ focus_tree = {
 
 	focus = {
 		id = INS_political_stabilization
-		icon = GFX_focus_generic_self_management
+		icon = GFX_focus_generic_diverse_army
 
 		available = {
 
@@ -1931,20 +1954,48 @@ focus_tree = {
 		completion_reward = {
 			add_research_slot = 1
 			random_owned_controlled_state = {
+				prioritize = { 446 }
 				limit = {
 					INS_only_militia_states_if_possible_and_needed = yes
 					is_coastal = yes
 					free_building_slots = {
 						building = dockyard
-						size > 0
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = dockyard
 					level = 1
 					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+					NOT = {
+						any_core_state = {
+							naval_headquarters > 0
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						impassable = no
+						is_controlled_by = ROOT
+						is_coastal = yes
+					}
+					prioritize = { 446 13520 } #Surabaya
+					add_building_construction = {
+						type = naval_headquarters
+						level = 1
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_naval_base = yes
+						}
+					}
 				}
 			}
 		}
@@ -2206,7 +2257,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_MILITARY_CHARACTER }
 		completion_reward = {
-			INS_oerip_soemohardjo = {
+			INS_urip_sumoharjo = {
 				promote_leader = yes
 				add_skill_level = 1
 			}
@@ -2329,7 +2380,7 @@ focus_tree = {
 				ahead_reduction = 1.0
 			}
 
-			INS_oerip_soemohardjo = {
+			INS_urip_sumoharjo = {
 				add_skill_level = 1
 			}
 		}
@@ -2392,6 +2443,7 @@ focus_tree = {
 		available = {
 			democratic > 0.4
 		}
+
 		prerequisite = { focus = INS_political_stabilization }
 		mutually_exclusive = { focus = INS_support_tan_malakas_coup focus = INS_guided_democracy }
 
@@ -2415,7 +2467,7 @@ focus_tree = {
 			custom_effect_tooltip = INS_no_more_political_chaos_tt
 
 			effect_tooltip = {
-				INS_sutan_sjahrir = {
+				INS_sutan_syahrir = {
 					add_country_leader_role = {
 						promote_leader = yes
 						country_leader = {
@@ -3127,6 +3179,7 @@ focus_tree = {
 			neutrality > 0.6
 			has_war_support > 0.5
 		}
+
 		prerequisite = { focus = INS_political_stabilization }
 		mutually_exclusive = { focus = INS_support_tan_malakas_coup focus = INS_vice_presidential_edict }
 
@@ -3444,6 +3497,8 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = available_political_advisor
 			set_country_flag = INS_islamist_loyalty
+			show_ideas_tooltip = INS_abikusno_cokrosuyoso
+			show_ideas_tooltip = INS_sukiman
 			show_ideas_tooltip = INS_mohammad_natsir
 			show_ideas_tooltip = INS_mohammad_roem
 			show_ideas_tooltip = INS_sjafruddin_prawiranegara
@@ -3626,6 +3681,7 @@ focus_tree = {
 		available = {
 			communism > 0.5
 		}
+
 		prerequisite = { focus = INS_political_stabilization }
 		mutually_exclusive = { focus = INS_vice_presidential_edict focus = INS_guided_democracy }
 
@@ -3957,6 +4013,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = INS_musso_ascends_tt
+			set_cosmetic_tag = INS_SOV
 
 		}
 	}
@@ -4211,6 +4268,7 @@ focus_tree = {
 						include_locked = yes
 					}
 					impassable = no
+					is_core_of = INS
 				}
 				prioritize = { 1128 974 1135 672 }
 				add_extra_state_shared_building_slots = 1
@@ -4218,6 +4276,12 @@ focus_tree = {
 					type = industrial_complex
 					level = 1
 					instant_build = yes
+				}
+				if = {
+					limit = {
+						NOT = { is_core_of = INS }
+					}
+					add_compliance = 10
 				}
 			}
 		}
@@ -4264,6 +4328,12 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
+				if = {
+					limit = {
+						NOT = { is_core_of = INS }
+					}
+					add_compliance = 10
+				}
 			}
 			random_owned_controlled_state = {
 				limit = {
@@ -4277,6 +4347,12 @@ focus_tree = {
 					type = infrastructure
 					level = 1
 					instant_build = yes
+				}
+				if = {
+					limit = {
+						NOT = { is_core_of = INS }
+					}
+					add_compliance = 10
 				}
 			}
 		}
@@ -4316,6 +4392,12 @@ focus_tree = {
 					level = 1
 					instant_build = yes
 				}
+				if = {
+					limit = {
+						NOT = { is_core_of = INS }
+					}
+					add_compliance = 10
+				}
 			}
 			random_owned_state = {
 				limit = {
@@ -4333,6 +4415,12 @@ focus_tree = {
 					type = industrial_infrastructure
 					level = 1
 					instant_build = yes
+				}
+				if = {
+					limit = {
+						NOT = { is_core_of = INS }
+					}
+					add_compliance = 10
 				}
 			}
 			build_railway = {
@@ -4665,6 +4753,12 @@ focus_tree = {
 			}
 			add_dynamic_modifier = {
 				modifier = INS_bangka_bauxite_export
+			}
+			hidden_effect = {
+				add_victory_points = { #Muntok to be 2
+					province = 7384
+					value = 2
+				}
 			}
 		}
 	}
@@ -5255,9 +5349,8 @@ focus_tree = {
 
 		completion_reward = {
 
-
 			custom_effect_tooltip = INS_oil_decisions_unlock_tt
-			custom_effect_tooltip = newline_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			if = {
 				limit = {
@@ -5588,6 +5681,7 @@ focus_tree = {
 			custom_effect_tooltip = INS_great_depression_tt
 			add_to_variable = { var = INS_great_depression_production_speed_buildings_factor value = 0.15 tooltip = production_speed_buildings_factor_tt }
 
+			custom_effect_tooltip = generic_skip_one_line_tt
 			every_country = {
 				limit = {
 					is_literally_china = yes
@@ -5598,6 +5692,7 @@ focus_tree = {
 				}
 			}
 
+			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = INS_hok_hoei_kan
 		}
@@ -5992,13 +6087,16 @@ focus_tree = {
 					swap_country_leader_traits = {
 						remove = INS_staunch_imperialist
 						add = INS_staunch_imperialist_upgraded
-						ideology = oligarchism
+						ideology = colonial_government
 					}
 					hidden_effect = {
-						swap_country_leader_traits = {
-							remove = INS_staunch_imperialist
-							add = INS_staunch_imperialist_upgraded
-							ideology = conservatism
+						remove_country_leader_trait = {
+							ideology = colonial_government
+							trait = INS_staunch_imperialist 
+						}
+						add_country_leader_trait = {
+							ideology = colonial_government
+							trait = INS_staunch_imperialist_upgraded
 						}
 					}
 				}
@@ -6011,10 +6109,13 @@ focus_tree = {
 						ideology = conservatism
 					}
 					hidden_effect = {
-						swap_country_leader_traits = {
-							remove = INS_staunch_imperialist
-							add = INS_staunch_imperialist_upgraded
-							ideology = oligarchism
+						remove_country_leader_trait = {
+							ideology = conservatism
+							trait = INS_staunch_imperialist 
+						}
+						add_country_leader_trait = {
+							ideology = conservatism
+							trait = INS_staunch_imperialist_upgraded
 						}
 					}
 				}
@@ -6071,10 +6172,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			remove_advisor_role = {
-				character = INS_mohammad_hunsi_tharmin
+				character = INS_husni_thamrin
 				slot = political_advisor 
 			}
-			INS_oerip_soemohardjo = {
+			INS_urip_sumoharjo = {
 				retire = yes
 			}
 			custom_effect_tooltip = INS_dutch_east_indies_tt
@@ -6196,7 +6297,7 @@ focus_tree = {
 			 	tooltip = INS_tjarda_explain_tt
 					has_country_leader = {
 						ruling_only = yes
-						character = INS_a_t_van_starkenborgh_stachouwer
+						character = INS_tjarda_van_starkenborgh_stachouwer
 					}
 			 }
 		}
@@ -6216,7 +6317,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.05
-			INS_a_t_van_starkenborgh_stachouwer = {
+			INS_tjarda_van_starkenborgh_stachouwer = {
 				swap_country_leader_traits = {
 					remove = TAOG_liberal_colonial_leader
 					add = TAOG_liberal_colonial_leader_2
@@ -6240,7 +6341,7 @@ focus_tree = {
 		available = {
 			has_country_leader = {
 				ruling_only = yes
-				character = INS_a_t_van_starkenborgh_stachouwer
+				character = INS_tjarda_van_starkenborgh_stachouwer
 			}
 			custom_trigger_tooltip = {
 				tooltip = INS_invest_in_batavian_education_req_tt
@@ -6290,7 +6391,7 @@ focus_tree = {
 		available = {
 			has_country_leader = {
 				ruling_only = yes
-				character = INS_a_t_van_starkenborgh_stachouwer
+				character = INS_tjarda_van_starkenborgh_stachouwer
 			}
 			custom_trigger_tooltip = {
 				tooltip = INS_invest_in_batavian_education_req_2_tt
@@ -6340,7 +6441,7 @@ focus_tree = {
 		available = {
 			has_country_leader = {
 				ruling_only = yes
-				character = INS_a_t_van_starkenborgh_stachouwer
+				character = INS_tjarda_van_starkenborgh_stachouwer
 			}
 		}
 		prerequisite = { focus = INS_governor_general_tjarda }
@@ -6415,7 +6516,7 @@ focus_tree = {
 		available = {
 			has_country_leader = {
 				ruling_only = yes
-				character = INS_a_t_van_starkenborgh_stachouwer
+				character = INS_tjarda_van_starkenborgh_stachouwer
 			}
 		}
 		prerequisite = { focus = INS_electrical_investments }
@@ -6841,7 +6942,7 @@ focus_tree = {
 					add_country_leader_role = {
 						promote_leader = yes
 						country_leader = {
-							ideology = emperor_fascism
+							ideology = rexism
 							expire = "1935.1.1"
 							traits = { INS_leader_of_the_people }
 						}
@@ -6949,6 +7050,7 @@ focus_tree = {
 			hidden_effect = {
 				indonesia_free_effect = yes
 				indonesia_form_republic_effect = yes
+				set_cosmetic_tag = INS_secular
 			}
 			HOL = {
 				country_event = {
@@ -6992,6 +7094,7 @@ focus_tree = {
 			OR = {
 				controls_state = 974 #Medan and Riouw
 				controls_state = 672 #South Sumatra
+				controls_state = 672 # South Sumatra
 				controls_state = 335 #West Java
 			}
 			is_subject_of = JAP
@@ -7081,6 +7184,45 @@ focus_tree = {
 							level = 4
 							instant_build = yes
 							province = 12165
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 672 # South Sumatra
+				}
+				give_resource_rights = {
+					receiver = JAP
+					state = 672  # South Sumatra
+				}
+				672 = {
+					if = {
+						limit = {
+							infrastructure < 5
+						}
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					if = {
+						limit = {
+							any_province_building_level = {
+								province = {
+									id = 7384
+									limit_to_border = yes
+								}
+								building = naval_base
+								level < 7
+							}
+						}
+						add_building_construction = {
+							type = naval_base
+							level = 4
+							instant_build = yes
+							province = 7384
 						}
 					}
 				}
