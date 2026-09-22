@@ -1,0 +1,24 @@
+r56_ETH_electrification_0 = {
+	icon = GFX_modifiers_ETH_state_development
+
+	disable_strategic_redeployment = 1
+	production_speed_buildings_factor = -0.15
+	local_factories = -0.15
+	local_resources = -0.15
+}
+
+r56_ETH_electrification_1 = {
+	icon = GFX_modifiers_ETH_state_development
+
+	production_speed_buildings_factor = -0.1
+	local_factories = -0.1
+	local_resources = -0.1
+}
+
+r56_ETH_electrification_2 = {
+	icon = GFX_modifiers_ETH_state_development
+
+	production_speed_buildings_factor = -0.05
+	local_factories = -0.05
+	local_resources = -0.05
+}

@@ -1,3 +1,16 @@
+r56_ETH_modernize_our_country_cat = {
+
+	icon = GFX_decision_category_generic_industry
+
+	picture = GFX_decision_cat_picture_chitet
+
+	allowed = {
+		original_tag = ETH
+	}
+}
+
+#Old Categories
+
 ETH_r56_defeat_italy_category = { #we had the name ETH_defeat_italy_category first paradox
 
 	icon = ethiopian_war

@@ -21,6 +21,88 @@ focus_tree = {
 
 default = no
 
+	focus = {
+		id = r56_ETH_electrify_the_country
+		icon = GFX_focus_generic_electrification
+
+		cost = 5
+		x = 3
+		y = 14
+
+		completion_reward = {
+			unlock_decision_tooltip = r56_ETH_electrify_state_fake
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_ramp_up_weapons_production
+		icon = GFX_goal_generic_war_factory
+
+		prerequisite = {
+			focus = r56_ETH_electrify_the_country
+		}
+
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = r56_ETH_electrify_the_country
+
+		available = {
+			any_owned_state = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+				NOT = {
+					has_dynamic_modifier = r56_ETH_electrification_0
+				}
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = { 271 }
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = {
+						has_dynamic_modifier = r56_ETH_electrification_0
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+###### OLD TREE ########
+
 ###### DEVELOPMENT FOCUS ########
 
 	focus = {

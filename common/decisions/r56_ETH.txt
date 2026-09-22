@@ -1,0 +1,131 @@
+r56_ETH_modernize_our_country_cat = {
+
+	r56_ETH_electrify_state = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			original_tag = ETH
+		}
+
+		visible = {
+			has_completed_focus = r56_ETH_electrify_the_country
+		}
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				has_dynamic_modifier = r56_ETH_electrification_0
+			}
+		}
+
+		target_array = controlled_states
+
+		state_target = yes
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = r56_ETH_electrification_0
+				}
+				add_dynamic_modifier = {
+					modifier = r56_ETH_electrification_1
+				}
+			}
+		}
+	}
+
+	r56_ETH_electrify_state_fake = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			always = no
+		}
+	}
+
+	r56_ETH_increase_grid_capacity_in_state = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			original_tag = ETH
+		}
+
+		visible = {
+			has_completed_focus = r56_ETH_electrify_the_country
+		}
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				has_dynamic_modifier = r56_ETH_electrification_1
+			}
+		}
+
+		target_array = controlled_states
+
+		state_target = yes
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = r56_ETH_electrification_1
+				}
+				add_dynamic_modifier = {
+					modifier = r56_ETH_electrification_2
+				}
+			}
+		}
+	}
+
+	r56_ETH_increase_grid_capacity_in_state_fake = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			always = no
+		}
+	}
+
+	r56_ETH_lay_electricity_lines_into_rural_state = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			original_tag = ETH
+		}
+
+		visible = {
+			has_completed_focus = r56_ETH_electrify_the_country
+		}
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				has_dynamic_modifier = r56_ETH_electrification_2
+			}
+		}
+
+		target_array = controlled_states
+
+		state_target = yes
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = r56_ETH_electrification_2
+				}
+			}
+		}
+	}
+
+	r56_ETH_lay_electricity_lines_into_rural_state_fake = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			always = no
+		}
+	}
+}

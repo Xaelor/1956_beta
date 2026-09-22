@@ -1,4 +1,24 @@
 ﻿l_english:
+#Focuses
+ r56_ETH_electrify_the_country: "Electrify the Country"
+ r56_ETH_electrify_the_country_desc: "[ROOT.GetNameDefCap] has always lacked behind the [ITA.GetAdjective] and [TUR.GetAdjective] colonizers and we thus can't compete with them. The only reason why we exist is thanks to outside materiel help. The only way to significantly increase production of weapons is by electrifying the country."
+ r56_ETH_ramp_up_weapons_production: "Ramp Up Weapons Production"
+ r56_ETH_ramp_up_weapons_production_desc: "Our grid can support new factories that can produce weapons domestically. By using this to our advantage, conquering us will be much harder than ever before."
+#Ideas
+
+ r56_ETH_electrification_0: "£GFX_infrastructure_texticon  Electrification: §R0§!"
+ r56_ETH_electrification_1: "£GFX_infrastructure_texticon  Electrification: §90§!"
+ r56_ETH_electrification_2: "£GFX_infrastructure_texticon  Electrification: §G0§!"
+#Decisions
+ r56_ETH_modernize_our_country_cat: "Modernize Our Country"
+ r56_ETH_modernize_our_country_cat_desc: ""
+ r56_ETH_electrify_state: "Electrify [FROM.GetName]"
+ r56_ETH_electrify_state_fake: "Electrify All States"
+ r56_ETH_increase_grid_capacity_in_state: "Increase Grid Capacity In [FROM.GetName]"
+ r56_ETH_increase_grid_capacity_in_state_fake: "Increase Grid Capacity In All States"
+ r56_ETH_lay_electricity_lines_into_rural_areas_in_state: "Lay Electricity Lines Into Rural [FROM.GetName]"
+ r56_ETH_lay_electricity_lines_into_rural_areas_in_state_fake: "Lay Electricity Lines Into Rural Areas In All States"
+#Old Content
  ETH_r56_defeat_italy_category:0 "Defeat Italy"
  ETH_r56_defeat_italy:0 "Defeat Italy"
  ETH_military_reforms_category:0 "Military Reforms"
