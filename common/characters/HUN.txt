@@ -3169,8 +3169,7 @@ characters={
 				}
 				IF = {
 					limit = {
-						# TODO:JA: Change this later!
-						has_dlc = "By Blood Alone"
+						has_dlc = "Gotterdammerung"
 					}
 					has_completed_focus = wuw_HUN_end_the_regency
 				}

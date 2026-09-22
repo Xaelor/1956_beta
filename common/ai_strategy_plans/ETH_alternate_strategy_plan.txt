@@ -15,6 +15,10 @@ ETH_BBA_alternative_imperialist_plan = {
 			}
 		}
 		has_DLC = "By Blood Alone"
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort = {
 		# is_subject = yes # Maybe re-enable...
@@ -79,6 +83,10 @@ ETH_stalinist_plan = {
 			}
 		}
 		has_DLC = "By Blood Alone"
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort =  {
 
@@ -149,6 +157,10 @@ ETH_anarcho_communist_plan = {
 			}
 		}
 		has_DLC = "By Blood Alone"
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort =  {
 
@@ -207,6 +219,10 @@ ETH_fascist_collaborationist_plan = {
 			}
 		}
 		has_DLC = "By Blood Alone"
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort =  {
 
@@ -253,6 +269,10 @@ ETH_fascist_independent_plan = {
 			}
 		}
 		has_DLC = "By Blood Alone"
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort =  {
 

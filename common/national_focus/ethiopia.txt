@@ -16,6 +16,7 @@ focus_tree = {
 			add = 30 # R56
 			original_tag = ETH
 			has_dlc = "By Blood Alone"
+			has_global_flag = eth_dlc_focus_tree
 			NOT = {
 				any_other_country = { 
 					original_tag = ETH # There can be only one...

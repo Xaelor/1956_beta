@@ -134,6 +134,12 @@ ETH_second_italo_ethiopian_war_category = {
 
 	visible = {
 		has_global_flag = second_italo_ethiopian_war_flag
+		if = {
+			limit = {
+				tag = ETH
+			}
+			has_global_flag = eth_dlc_focus_tree
+		}
 	}
 	visible_when_empty = yes 
 }
@@ -154,6 +160,7 @@ ETH_improve_country_category = {
 
 	visible = {
 		has_dlc = "By Blood Alone"
+		has_global_flag = eth_dlc_focus_tree
 		OR = {
 			# We can develop a state 
 			any_owned_state = {  
@@ -195,6 +202,7 @@ ETH_anti_colonialism_category = { #### TODO_TA Remove - to be replaced by proper
 
 	visible = {
 		has_dlc = "By Blood Alone"
+		has_global_flag = eth_dlc_focus_tree
 		has_country_flag = ETH_anti_colonialism_flag 
 	}
 
@@ -211,6 +219,7 @@ ETH_anti_colonialism_category = { #### TODO_TA Remove - to be replaced by proper
 #	allowed = 
 #	{
 #		original_tag = ETH
+#		has_global_flag = eth_dlc_focus_tree
 #		has_dlc = "By Blood Alone"
 #		
 #	}
@@ -231,6 +240,7 @@ ETH_freedom_at_gunpoint_category = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		has_completed_focus = ETH_freedom_at_gunpoint
 	}
 	priority = 5
@@ -245,6 +255,7 @@ ETH_exploit_french_weakness_category = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		OR = {
 			has_completed_focus = ETH_exploit_french_weakness
 			has_completed_focus = ETH_demand_DJI
@@ -264,6 +275,7 @@ ETH_reintegrate_former_territory_category = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		has_completed_focus = ETH_reclaim_the_empire
 	}
 	on_map_area = {
@@ -302,6 +314,7 @@ ETH_italo-ethiopian_empire_decisions = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		has_completed_focus = ETH_the_italo-ethiopian_empire
 	}
 	
@@ -319,6 +332,7 @@ ETH_consolidate_east_africa_category = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		has_completed_focus = ETH_consolidate_east_africa
 	}
 	on_map_area = {
@@ -348,6 +362,7 @@ ETH_improve_the_horn_of_africa_category = {
 		has_dlc = "By Blood Alone"
 	}
 	visible = {
+		has_global_flag = eth_dlc_focus_tree
 		has_completed_focus = ETH_develop_the_horn_of_africa
 	}
 	

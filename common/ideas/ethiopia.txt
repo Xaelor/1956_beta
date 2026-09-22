@@ -1108,7 +1108,7 @@ ideas = {
 			}
 
 			visible = {
-
+				has_global_flag = eth_dlc_focus_tree
 			}
 
 			available = {
@@ -1156,6 +1156,9 @@ ideas = {
 				original_tag = ETH
 				has_dlc = "By Blood Alone"
 			}
+			visible = {
+				has_global_flag = eth_dlc_focus_tree
+			}
 			available = {
 				has_completed_focus = ETH_modernizing_the_industry
 			}
@@ -1172,6 +1175,9 @@ ideas = {
 			allowed = {
 				original_tag = ETH
 				has_dlc = "By Blood Alone"
+			}
+			visible = {
+				has_global_flag = eth_dlc_focus_tree
 			}
 			available = {
 				has_completed_focus = ETH_invite_foreign_prospectors
@@ -1198,6 +1204,9 @@ ideas = {
 				original_tag = ETH
 				has_dlc = "By Blood Alone"
 			}
+			visible = {
+				has_global_flag = eth_dlc_focus_tree
+			}
 			available = {
 				has_completed_focus = ETH_invite_foreign_prospectors
 			}
@@ -1222,6 +1231,7 @@ ideas = {
 			}
 
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_soviet-ethiopian_trade_agreement
 			}
 
@@ -1315,7 +1325,7 @@ ideas = {
 			available = {
 				if = {
 					limit = {
-						has_dlc = "By Blood Alone" #r56
+						has_focus_tree = ethiopia_tree #r56
 					}
 					has_completed_focus = ETH_invest_in_the_west
 				}
@@ -1339,7 +1349,7 @@ ideas = {
 			available = {
 				if = {
 					limit = {
-						has_dlc = "By Blood Alone" #r56
+						has_focus_tree = ethiopia_tree #r56
 					}
 					has_completed_focus = ETH_invest_in_the_north
 				}
@@ -1367,6 +1377,7 @@ ideas = {
 			}
 
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_soviet-ethiopian_trade_agreement
 			}
 
@@ -1388,6 +1399,7 @@ ideas = {
 			}
 			picture = beretta
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_country_flag = ETH_ITA_sends_army_designers
 			}
 			
@@ -1405,6 +1417,7 @@ ideas = {
 			}
 			picture = breda
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_country_flag = ETH_ITA_sends_army_designers
 			}
 			
@@ -1419,6 +1432,7 @@ ideas = {
 
 			picture = generic_artillery_manufacturer_2
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_CZE_skoda_artillery}}
@@ -1456,6 +1470,7 @@ ideas = {
 				has_dlc = "By Blood Alone"
 			}
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_mas}}
@@ -1483,6 +1498,7 @@ ideas = {
 				has_dlc = "By Blood Alone"
 			}
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_scania}}
@@ -1516,6 +1532,7 @@ ideas = {
 				has_dlc = "By Blood Alone"
 			}
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_bofors}}
@@ -1626,6 +1643,12 @@ ideas = {
 				original_tag = ETH
 			}
 
+			visible = {
+				NOT = {
+					has_global_flag = eth_dlc_focus_tree
+				}
+			}
+
 			available = {
 
 				has_completed_focus = ETH_tank_refurbishment_plant
@@ -1655,6 +1678,7 @@ ideas = {
 			}
 
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_mytishchi-ababa_plant
 			}
 
@@ -1679,6 +1703,7 @@ ideas = {
 			}
 			
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				OR = {
 					has_country_flag = ETH_ITA_sends_army_designers
 					AND = { #r56
@@ -1704,6 +1729,7 @@ ideas = {
 				has_dlc = "By Blood Alone"
 			}
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_CZE_ckd}}
@@ -1733,6 +1759,7 @@ ideas = {
 
 			picture = generic_tank_manufacturer_3
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_CZE_skoda_armor}}
@@ -1768,6 +1795,7 @@ ideas = {
 				has_dlc = "By Blood Alone"
 			}
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_vickers_armstrong_eng}}
@@ -1796,6 +1824,7 @@ ideas = {
 		
 			picture = renault
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_renault_fra}}
@@ -1825,6 +1854,7 @@ ideas = {
 			
 			picture = generic_tank_manufacturer_2
 			visible = {
+				has_global_flag = eth_dlc_focus_tree
 				has_completed_focus = ETH_invite_foreign_industrialists
 				IF = {
 					limit = {NOT = {has_idea = ETH_landsverk}}

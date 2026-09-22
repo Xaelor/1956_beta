@@ -104,6 +104,10 @@ characters={
 			visible = {
 				OR = { #yes two of the same check
 					has_dlc = "By Blood Alone"
+					has_game_rule = {
+						rule = ETH_focus_tree_selection
+						option = STANDARD_TREE
+					}
 					ROOT = { original_tag = ITA }
 				}
 				OR = {
@@ -120,6 +124,12 @@ characters={
 			allowed = {
 				original_tag = ETH
 				has_dlc = "By Blood Alone"
+			}
+			visible = {
+				has_game_rule = {
+					rule = ETH_focus_tree_selection
+					option = STANDARD_TREE
+				}
 			}
 			available = {
 				IF = {

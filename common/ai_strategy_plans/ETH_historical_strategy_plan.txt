@@ -21,6 +21,10 @@ ETH_historical_plan = {
 				option = HISTORICAL
 			}
 		}
+		has_game_rule = {
+			rule = ETH_focus_tree_selection
+			option = STANDARD_TREE
+		}
 	}
 	abort = {
 		is_subject = yes
