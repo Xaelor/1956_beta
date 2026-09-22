@@ -125,6 +125,19 @@ default = no
 			}
 		}
 
+		select_effect = { #here in order to make the effect not bug out
+			if = {
+				limit = {
+					NOT = {
+						has_tech = steel_production_1
+					}
+				}
+				set_technology = {
+					steel_production_1 = 1
+				}
+			}
+		}
+
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
