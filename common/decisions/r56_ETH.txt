@@ -60,6 +60,9 @@ r56_ETH_modernize_our_country_cat = {
 			FROM = {
 				is_controlled_by = ROOT
 				has_dynamic_modifier = r56_ETH_electrification_1
+				NOT = {
+					state = 271
+				}
 			}
 		}
 

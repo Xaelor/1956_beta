@@ -4,6 +4,10 @@
  r56_ETH_electrify_the_country_desc: "[ROOT.GetNameDefCap] has always lacked behind the [ITA.GetAdjective] and [TUR.GetAdjective] colonizers and we thus can't compete with them. The only reason why we exist is thanks to outside materiel help. The only way to significantly increase production of weapons is by electrifying the country."
  r56_ETH_ramp_up_weapons_production: "Ramp Up Weapons Production"
  r56_ETH_ramp_up_weapons_production_desc: "Our grid can support new factories that can produce weapons domestically. By using this to our advantage, conquering us will be much harder than ever before."
+ r56_ETH_establish_ethiopian_iron_and_steel: "Establish [ETH.GetAdjective] Iron And Steel"
+ r56_ETH_establish_ethiopian_iron_and_steel_desc: "Manufacturing demands high quanities of industrial metals and especially steel. By investing into Steel production, we decrease our reliance on imports."
+ r56_ETH_develop_addis_ababa: "Develop [271.GetName]"
+ r56_ETH_develop_addis_ababa_desc: "In order to show the most of us, we need a Western European style capital with modern industries located in its proximity."
 #Ideas
 
  r56_ETH_electrification_0: "£GFX_infrastructure_texticon  Electrification: §R0§!"
