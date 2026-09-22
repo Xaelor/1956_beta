@@ -6,9 +6,20 @@
  r56_ETH_ramp_up_weapons_production_desc: "Our grid can support new factories that can produce weapons domestically. By using this to our advantage, conquering us will be much harder than ever before."
  r56_ETH_establish_ethiopian_iron_and_steel: "Establish [ETH.GetAdjective] Iron And Steel"
  r56_ETH_establish_ethiopian_iron_and_steel_desc: "Manufacturing demands high quanities of industrial metals and especially steel. By investing into Steel production, we decrease our reliance on imports."
+ r56_ETH_build_industrial_centeres: "Build Industrial Centeres"
+ r56_ETH_build_industrial_centeres_desc: "Our economy needs to include more [ETH.GetAdjective]s. One way of achieveing this goal is by designating a few cities scattered all across this country as industrial centeres."
  r56_ETH_develop_addis_ababa: "Develop [271.GetName]"
  r56_ETH_develop_addis_ababa_desc: "In order to show the most of us, we need a Western European style capital with modern industries located in its proximity."
+ r56_ETH_found_the_university_of_addis_ababa: "Found the University of [271.GetName]"
+ r56_ETH_found_the_university_of_addis_ababa_desc: "[ETH.GetAdjective] children are not as smart as their European counterpart. This is in part due to lack of high education."
+
+ r56_ETH_enact_army_reforms: "Enact Army Reforms"
+ r56_ETH_enact_army_reforms_desc: "Our army has fallen behind the entire world. We no longer compete. We still use spears while the world uses guns and the guns we have are decades or even centuries old."
+ r56_ETH_found_the_harar_military_academy: "Found the Harar Military Academy"
+ r56_ETH_found_the_harar_military_academy_desc: "Our officers need to study modern doctrines. For this we need our own military academy in Harar, a major railway hub."
 #Ideas
+ r56_ETH_outdated_military_ns: "Outdated Military"
+ r56_ETH_outdated_military_ns_desc: "Our military is centuries behind our enemies. We still resort to spears and bows while the world has adapted firarms and motorized vehicles.\n\nIn addition we use medieval combat strategies which are easily outmaneuvered by the competition."
 
  r56_ETH_electrification_0: "£GFX_infrastructure_texticon  Electrification: §R0§!"
  r56_ETH_electrification_1: "£GFX_infrastructure_texticon  Electrification: §90§!"

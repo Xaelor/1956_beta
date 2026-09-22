@@ -1,0 +1,110 @@
+ideas = {
+	
+	country = {
+		
+		r56_ETH_outdated_military_1_ns = {
+
+			name = r56_ETH_outdated_military_ns
+
+			picture = generic_army_problems
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_attack_factor = -0.15
+				army_defence_factor = -0.1
+				army_morale_factor = -0.1
+				army_org_factor = -0.1
+				experience_gain_army_factor = -0.5
+				mastery_gain_factor = -0.4
+			}
+		}
+
+		r56_ETH_outdated_military_2_ns = {
+
+			name = r56_ETH_outdated_military_ns
+
+			picture = generic_army_problems
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_attack_factor = -0.1
+				army_defence_factor = -0.05
+				army_morale_factor = -0.05
+				army_org_factor = -0.05
+				experience_gain_army_factor = -0.3
+				mastery_gain_factor = -0.3
+			}
+		}
+
+		r56_ETH_outdated_military_3_ns = {
+
+			name = r56_ETH_outdated_military_ns
+
+			picture = generic_army_problems
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_attack_factor = -0.15
+				army_defence_factor = -0.1
+				army_morale_factor = -0.1
+				army_org_factor = -0.05
+				experience_gain_army_factor = -0.2
+				mastery_gain_factor = -0.2
+			}
+		}
+
+		r56_ETH_outdated_military_4_ns = {
+
+			name = r56_ETH_outdated_military_ns
+
+			picture = generic_army_problems
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_attack_factor = -0.15
+				army_defence_factor = -0.1
+				army_morale_factor = -0.1
+				army_org_factor = -0.05
+				experience_gain_army_factor = -0.1
+				mastery_gain_factor = -0.1
+			}
+		}
+	}
+
+}

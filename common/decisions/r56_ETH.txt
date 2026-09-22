@@ -53,7 +53,7 @@ r56_ETH_modernize_our_country_cat = {
 		}
 
 		visible = {
-			has_completed_focus = r56_ETH_electrify_the_country
+			has_completed_focus = r56_ETH_build_industrial_centeres
 		}
 
 		target_trigger = {

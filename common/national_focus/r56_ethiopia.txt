@@ -1,11 +1,4 @@
-#####################################################################
-#																	#
-#							The Lion of Judah 						#
-#																	#
-# 							FOCUS TREES	 							#
-#																 	#
-#####################################################################
-
+#####-----> RT56 Ethiopian Focus Tree by Xaelor <><> <><> <><>
 #!gfx:interface\r56_goals.gfx
 focus_tree = {
 	id = eth_focus
@@ -20,6 +13,8 @@ focus_tree = {
 	continuous_focus_position = { x = 1500 y = 800 }
 
 default = no
+
+	###---> Economy Tree <><> <><> <><>
 
 	focus = {
 		id = r56_ETH_electrify_the_country
@@ -132,7 +127,6 @@ default = no
 
 		completion_reward = {
 			random_owned_controlled_state = {
-				prioritize = { 271 }
 				limit = {
 					free_building_slots = {
 						building = steel_mill
@@ -155,6 +149,99 @@ default = no
 
 		search_filters = {
 			FOCUS_FILTER_RESOURCES
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_build_industrial_centeres
+		icon = GFX_goal_generic_industrial_planning
+
+		prerequisite = {
+			focus = r56_ETH_ramp_up_weapons_production
+			focus = r56_ETH_establish_ethiopian_iron_and_steel
+		}
+
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = r56_ETH_ramp_up_weapons_production
+
+		available = {
+			any_owned_state = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+				NOT = {
+					has_dynamic_modifier = r56_ETH_electrification_0
+				}
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = yes
+				}
+			}
+			any_owned_state = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+				NOT = {
+					has_dynamic_modifier = r56_ETH_electrification_0
+				}
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = {
+						has_dynamic_modifier = r56_ETH_electrification_0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_core_of = ROOT
+					NOT = {
+						has_dynamic_modifier = r56_ETH_electrification_0
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = r56_ETH_increase_grid_capacity_in_state_fake
+		}
+
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
 
 		ai_will_do = {
@@ -218,6 +305,98 @@ default = no
 
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_found_the_university_of_addis_ababa
+		icon = GFX_goal_research_silver
+
+		prerequisite = {
+			focus = r56_ETH_electrify_the_country
+		}
+
+		cost = 10
+		x = 2
+		y = 1
+		relative_position_id = r56_ETH_electrify_the_country
+
+		available = {
+			controls_state = 271
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	###---> Army Tree <><> <><> <><>
+
+	focus = {
+		id = r56_ETH_enact_army_reforms
+		icon = GFX_goal_ETH_coa_army
+
+		cost = 10
+		x = 8
+		y = 14
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = r56_ETH_outdated_military_1_ns
+				add_idea = r56_ETH_outdated_military_2_ns
+			}
+		}
+
+		search_filters = {
+			FOCUS_FILTER_MILITARY_IMPROVEMENT
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_found_the_harar_military_academy
+		icon = GFX_focus_ETH_ecole_militaire_haile_selassie_1er
+
+		prerequisite = {
+			focus = r56_ETH_enact_army_reforms
+			focus = r56_ETH_found_the_university_of_addis_ababa
+		}
+
+		cost = 20
+		x = -2
+		y = 2
+		relative_position_id = r56_ETH_enact_army_reforms
+
+		available = {
+			controls_province = 13298
+			num_of_civilian_factories > 14
+		}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = r56_ETH_outdated_military_2_ns
+				add_idea = r56_ETH_outdated_military_3_ns
+			}
+			add_research_slot = 1
+		}
+
+		search_filters = {
+			FOCUS_FILTER_MILITARY_IMPROVEMENT FOCUS_FILTER_RESEARCH
 		}
 
 		ai_will_do = {
