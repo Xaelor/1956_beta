@@ -36,12 +36,19 @@ YEM_R56_plot_against_the_imam_cat = {
 			always = no
 		}
 
+		available = {
+			has_completed_focus = YEM_R56_the_national_revolution_begins
+		}
+
 		days_mission_timeout = 120
 
 		timeout_effect = {
 			add_to_variable = {
 				YEM_R56_revolution_points = 1
 				tooltip = YEM_R56_revolution_points_tt
+			}
+			hidden_effect = {
+				activate_mission = YEM_R56_revolutionary_support_grows
 			}
 		}
 

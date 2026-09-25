@@ -331,6 +331,9 @@ focus_tree = {
 			set_variable = {
 				YEM_R56_revolution_points = 3
 			}
+			hidden_effect = {
+				activate_mission = YEM_R56_revolutionary_support_grows
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -442,10 +445,13 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			remove_ideas = YEM_R56_feudal_society_ns
+			custom_effect_tooltip = generic_skip_one_line_tt
 			set_politics = {
 				ruling_party = democratic
 				elections_allowed = yes
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			if = {
 				limit = {
 					has_completed_focus = YEM_R56_secure_communist_support
@@ -477,9 +483,14 @@ focus_tree = {
 					}
 				}
 			}
+			hidden_effect = {
+				YEM_imam_yahya = {
+					set_nationality = FAK
+				}
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
 	}
 
 	focus = {
@@ -504,9 +515,11 @@ focus_tree = {
 				ruling_party = communism
 				elections_allowed = no
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = idea_RAJ_planned_economy
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 	}
 
 	#focus = {
@@ -562,9 +575,11 @@ focus_tree = {
 
 		completion_reward = {
 			hold_election = ROOT
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_stability = 0.1
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	focus = {

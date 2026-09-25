@@ -2,8 +2,8 @@
  YEM_italo_yemeni_treaty_yemen: "Italo-Yemeni Treaty of 1926"
  YEM_italo_yemeni_treaty_italy: "Italo-Yemeni Treaty of 1926"
 
- YEM_R56_revolution_points: "§YRevolution Points§!"
- YEM_R56_revolution_points_tt: " $YEM_R56_revolution_points$: $RIGHT|+=1$"
+ YEM_R56_revolution_points: "Revolution Points"
+ YEM_R56_revolution_points_tt: "$YEM_R56_revolution_points$: $RIGHT|+=0$"
  YEM_R56_has_10_or_more_revolution_points_tt: "Has §Y10§! or more $YEM_R56_revolution_points$"
 ###---> Party Names <><> <><> <><>
 ###---> Ideas <><> <><> <><>
@@ -65,7 +65,7 @@
 ###---> Decisions <><> <><> <><>
  YEM_R56_plot_against_the_imam_cat: "Plot Against the Imam"
  YEM_R56_revolution_info: "$YEM_R56_revolution_points$: [?YEM_R56_revolution_points]"
- YEM_R56_revolution_info_desc: "If you reach 10 $YEM_R56_revolution_points$, you can overthrow the Imam."
+ YEM_R56_revolution_info_desc: "If you reach 10 §Y$YEM_R56_revolution_points$§!, you can overthrow the Imam."
  YEM_R56_revolutionary_support_grows: "Revolutionary Support Grows"
 ###---> Characters <><> <><> <><>
 ###---> Equipment <><> <><> <><>
