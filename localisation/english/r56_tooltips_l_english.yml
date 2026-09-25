@@ -66,6 +66,11 @@
  decision_cost_CP_75_PP_50_blocked:0 "£command_power §R75§! £pol_power_icon §R50§!"
  decision_cost_CP_75_PP_50_tooltip:0 "It costs £command_power §Y75§! and £pol_power_icon §Y50§! to take the decision"
 
+#info decision tooltip
+ r56_decision_cost_INFO: "§YINFO§!"
+ r56_decision_cost_INFO_blocked: "§YINFO§!"
+ r56_decision_cost_INFO_tooltip: ""
+
  rail_way_plural:0 "Railways"
 
 # missing vanilla tooltip

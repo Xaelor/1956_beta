@@ -1,0 +1,11 @@
+YEM_R56_plot_against_the_imam_cat = {
+
+	allowed = {
+		original_tag = YEM
+	}
+
+	visible = {
+		has_completed_focus = YEM_R56_take_down_yaha
+	}
+
+}

@@ -1,0 +1,27 @@
+YEM_R56_plot_against_the_imam_cat = {
+
+	YEM_R56_revolution_info = {
+
+		icon = GFX_decision_generic_decision
+
+		priority = 99999
+
+		allowed = {
+			original_tag = YEM
+		}
+
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+
+		custom_cost_text = r56_decision_cost_INFO
+
+		custom_cost_trigger = {
+			always = no
+		}
+
+	}
+
+}

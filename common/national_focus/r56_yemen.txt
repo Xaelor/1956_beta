@@ -26,10 +26,10 @@ focus_tree = {
 
 	focus = {
 		id = YEM_R56_reinforce_imam_yahas_rule
-		icon = GFX_focus_PLACEHOLDER
+		icon = GFX_focus_GRE_monarchist_fervour
 		mutually_exclusive = { focus = YEM_R56_take_down_yaha }
 
-		x = 49
+		x = 48
 		y = 0
 		cost = 10
 
@@ -79,36 +79,33 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = YEM_R56_renew_the_italo_yemeni_treaty
-		icon = GFX_focus_befriend_italy
-		prerequisite = { focus = YEM_R56_continue_isolationist_policies focus = YEM_R56_look_towards_the_axis }
-
-		x = 2
-		y = 1
-		relative_position_id = YEM_R56_continue_isolationist_policies
-		cost = 5
-
-		available = {
-			has_opinion = {
-				target = ITA
-				value > 49
-			}
-		}
-
-		bypass = {
-			has_war_with = ITA
-		}
-
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = YEM_R56_italo_yemeni_treaty_ns
-				add_idea = YEM_R56_italo_yemeni_treaty_2_ns
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
+	#focus = {
+	#	id = YEM_R56_expand_the_italo_yemeni_treaty
+	#	icon = GFX_focus_befriend_italy
+	#	prerequisite = { focus = YEM_R56_continue_isolationist_policies focus = YEM_R56_look_towards_the_axis }
+	#
+	#	x = 2
+	#	y = 1
+	#	relative_position_id = YEM_R56_continue_isolationist_policies
+	#	cost = 5
+	#
+	#	available = {
+	#		has_opinion = {
+	#			target = ITA
+	#			value > 49
+	#		}
+	#	}
+	#
+	#	bypass = {
+	#		has_war_with = ITA
+	#	}
+	#
+	#	completion_reward = {
+	#		add_ideas = YEM_R56_italo_yemeni_treaty_ns
+	#	}
+	#
+	#	search_filters = { FOCUS_FILTER_POLITICAL }
+	#}
 
 	focus = {
 		id = YEM_R56_deterrence
@@ -320,24 +317,28 @@ focus_tree = {
 
 	focus = {
 		id = YEM_R56_take_down_yaha
-		icon = GFX_focus_PLACEHOLDER
+		icon = GFX_goal_CRO_muslims_excluded
 		mutually_exclusive = { focus = YEM_R56_reinforce_imam_yahas_rule }
 
-		x = 8
+		#x = 8
+		x = 7
 		y = 0
 		relative_position_id = YEM_R56_reinforce_imam_yahas_rule
 		cost = 10
 
 		completion_reward = {
-
+			unlock_decision_category_tooltip = YEM_R56_plot_against_the_imam_cat
+			set_variable = {
+				YEM_R56_revolution_points = 3
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
 		id = YEM_R56_prepare_for_the_revolution
-		icon = GFX_focus_PLACEHOLDER
+		icon = GFX_focus_ETH_freedom_at_gunpoint
 		prerequisite = { focus = YEM_R56_take_down_yaha }
 
 		x = 0
@@ -346,10 +347,13 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-
+			add_to_variable = {
+				YEM_R56_revolution_points = 1
+				tooltip = YEM_R56_revolution_points_tt
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -363,10 +367,13 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-
+			add_to_variable = {
+				YEM_R56_revolution_points = 1
+				tooltip = YEM_R56_revolution_points_tt
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -381,10 +388,15 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-
+			add_to_variable = {
+				YEM_R56_revolution_points = 2
+				tooltip = YEM_R56_revolution_points_tt
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_stability = -0.15
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
 
 	focus = {
@@ -399,10 +411,15 @@ focus_tree = {
 		cost = 10
 
 		completion_reward = {
-
+			add_to_variable = {
+				YEM_R56_revolution_points = -1
+				tooltip = YEM_R56_revolution_points_tt
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_war_support = 0.05
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
 	}
 
 	focus = {
@@ -415,11 +432,54 @@ focus_tree = {
 		relative_position_id = YEM_R56_secure_communist_support
 		cost = 10
 
-		completion_reward = {
-
+		available = {
+			check_variable = {
+				var = YEM_R56_revolution_points_tt
+				value = 10
+				compare = greater_than_or_equals
+				tooltip = YEM_R56_has_10_or_more_revolution_points_tt
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		completion_reward = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+			if = {
+				limit = {
+					has_completed_focus = YEM_R56_secure_communist_support
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.15
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.4
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.45
+				}
+				else = {
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.35
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.45
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.2
+					}
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -429,7 +489,8 @@ focus_tree = {
 		prerequisite = { focus = YEM_R56_secure_communist_support }
 		mutually_exclusive = { focus = YEM_R56_hold_new_elections focus = YEM_R56_make_islam_great_again }
 
-		x = -3
+		#x = -3
+		x = -2
 		y = 1
 		relative_position_id = YEM_R56_the_national_revolution_begins
 		cost = 10
@@ -439,47 +500,50 @@ focus_tree = {
 		}
 
 		completion_reward = {
-
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
-	focus = {
-		id = YEM_R56_secure_soviet_support
-		icon = GFX_goal_generic_soviet_assistance
-		prerequisite = { focus = YEM_R56_seize_the_means_of_production }
-		mutually_exclusive = { focus = YEM_R56_support_arabian_socialism }
+	#focus = {
+	#	id = YEM_R56_secure_soviet_support
+	#	icon = GFX_goal_generic_soviet_assistance
+	#	prerequisite = { focus = YEM_R56_seize_the_means_of_production }
+	#	mutually_exclusive = { focus = YEM_R56_support_arabian_socialism }
+	#
+	#	x = -1
+	#	y = 1
+	#	relative_position_id = YEM_R56_seize_the_means_of_production
+	#	cost = 10
+	#
+	#	completion_reward = {
+	#
+	#	}
+	#
+	#	search_filters = { FOCUS_FILTER_ }
+	#}
 
-		x = -1
-		y = 1
-		relative_position_id = YEM_R56_seize_the_means_of_production
-		cost = 10
-
-		completion_reward = {
-
-		}
-
-		search_filters = { FOCUS_FILTER_ }
-	}
-
-	focus = {
-		id = YEM_R56_support_arabian_socialism
-		icon = GFX_goal_united_arab_republic
-		prerequisite = { focus = YEM_R56_seize_the_means_of_production }
-		mutually_exclusive = { focus = YEM_R56_secure_soviet_support }
-
-		x = 1
-		y = 1
-		relative_position_id = YEM_R56_seize_the_means_of_production
-		cost = 10
-
-		completion_reward = {
-
-		}
-
-		search_filters = { FOCUS_FILTER_ }
-	}
+	#focus = {
+	#	id = YEM_R56_support_arabian_socialism
+	#	icon = GFX_goal_united_arab_republic
+	#	prerequisite = { focus = YEM_R56_seize_the_means_of_production }
+	#	mutually_exclusive = { focus = YEM_R56_secure_soviet_support }
+	#
+	#	x = 1
+	#	y = 1
+	#	relative_position_id = YEM_R56_seize_the_means_of_production
+	#	cost = 10
+	#
+	#	completion_reward = {
+	#
+	#	}
+	#
+	#	search_filters = { FOCUS_FILTER_ }
+	#}
 
 	focus = {
 		id = YEM_R56_hold_new_elections
@@ -510,7 +574,8 @@ focus_tree = {
 		prerequisite = { focus = YEM_R56_exclude_the_anti_muslims }
 		mutually_exclusive = { focus = YEM_R56_seize_the_means_of_production focus = YEM_R56_hold_new_elections }
 
-		x = 3
+		#x = 3
+		x = 2
 		y = 1
 		relative_position_id = YEM_R56_the_national_revolution_begins
 		cost = 10
@@ -520,10 +585,15 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			unlock_decision_tooltip = form_arabia #temp move down the branch
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = form_arabia #TODO move down the branch
 		}
 
-		search_filters = { FOCUS_FILTER_ }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 }

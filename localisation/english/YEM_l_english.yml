@@ -17,8 +17,8 @@
  YEM_R56_crack_down_on_autonomous_tribes_desc: ""
  YEM_R56_continue_isolationist_policies: "Continue Isolationist Policies"
  YEM_R56_continue_isolationist_policies_desc: ""
- YEM_R56_renew_the_italo_yemeni_treaty: "Renew the Italo-Yemeni Treaty"
- YEM_R56_renew_the_italo_yemeni_treaty_desc: ""
+ #YEM_R56_expand_the_italo_yemeni_treaty: "Expand the Italo-Yemeni Treaty"
+ #YEM_R56_expand_the_italo_yemeni_treaty_desc: ""
  YEM_R56_look_towards_the_axis: "Look Towards the Axis"
  YEM_R56_look_towards_the_axis_desc: ""
  YEM_R56_together_with_italy: "Together with Italy"
@@ -45,10 +45,10 @@
  YEM_R56_the_national_revolution_begins_desc: ""
  YEM_R56_seize_the_means_of_production: "Seize the Means of Production"
  YEM_R56_seize_the_means_of_production_desc: ""
- YEM_R56_secure_soviet_support: "Secure Soviet Support"
- YEM_R56_secure_soviet_support_desc: ""
- YEM_R56_support_arabian_socialism: "Support the Theory of Arab Socialism"
- YEM_R56_support_arabian_socialism_desc: ""
+ #YEM_R56_secure_soviet_support: "Secure Soviet Support"
+ #YEM_R56_secure_soviet_support_desc: ""
+ #YEM_R56_support_arabian_socialism: "Support the Theory of Arab Socialism"
+ #YEM_R56_support_arabian_socialism_desc: ""
  YEM_R56_hold_new_elections: "Hold New Elections"
  YEM_R56_hold_new_elections_desc: ""
  YEM_R56_make_islam_great_again: "Make Islam Great Again!"
@@ -59,5 +59,11 @@
 ###---> Industry Tree <><> <><> <><>
 ###---> Events <><> <><> <><>
 ###---> Decisions <><> <><> <><>
+ YEM_R56_plot_against_the_imam_cat: "Plot Against the Imam"
+ YEM_R56_revolution_info: "$YEM_R56_revolution_points$: [?YEM_R56_revolution_points]"
+ YEM_R56_revolution_info_desc: "If you reach 10 $YEM_R56_revolution_points$, you can overthrow the Imam."
+ YEM_R56_revolution_points: "§YRevolution Points§!"
+ YEM_R56_revolution_points_tt: " $YEM_R56_revolution_points$: $RIGHT|+=1$"
+ YEM_R56_has_10_or_more_revolution_points_tt: "Has §Y10§! or more $YEM_R56_revolution_points$"
 ###---> Characters <><> <><> <><>
 ###---> Equipment <><> <><> <><>
