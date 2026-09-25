@@ -105,6 +105,47 @@ ideas = {
 				mastery_gain_factor = -0.1
 			}
 		}
+
+		r56_ETH_the_christmas_offensive_ns = {
+
+			picture = RAJ_private_military_complex
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			targeted_modifier = {
+				tag = ITA
+				attack_bonus_against = 0.25
+				defense_bonus_against = 0.1
+			}
+		}
+
+		r56_ETH_black_lions_ns = {
+
+			picture = ETH_scavenging_tactics
+
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				conscription = 0.025
+				surrender_limit = 0.5
+			}
+		}
 	}
 
 }

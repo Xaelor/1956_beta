@@ -1,3 +1,39 @@
+r56_ETH_talyan_warara_cat = {
+
+	r56_ETH_national_mobilization = {
+
+		icon = GFX_decision_generic_electricity
+
+		allowed = {
+			original_tag = ETH
+		}
+
+		visible = {
+			has_completed_focus = r56_ETH_launch_the_christmas_offensive
+		}
+
+		available = {
+			has_completed_focus = r56_ETH_launch_the_christmas_offensive
+		}
+
+		custom_cost_text = r56_15_command_power_cost
+
+		custom_cost_trigger = {
+			command_power > 14
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -15
+			}
+			upgrade_conscription_law = yes
+		}
+	}
+
+}
+
 r56_ETH_modernize_our_country_cat = {
 
 	r56_ETH_electrify_state = {

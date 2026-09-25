@@ -17,14 +17,27 @@
  r56_ETH_enact_army_reforms_desc: "Our army has fallen behind the entire world. We no longer compete. We still use spears while the world uses guns and the guns we have are decades or even centuries old."
  r56_ETH_found_the_harar_military_academy: "Found the Harar Military Academy"
  r56_ETH_found_the_harar_military_academy_desc: "Our officers need to study modern doctrines. For this we need our own military academy in Harar, a major railway hub."
+
+ r56_ETH_launch_the_christmas_offensive: "Launch the Christmas Offensive"
+ r56_ETH_launch_the_christmas_offensive_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
+ r56_ETH_form_the_black_lions: "Form the Black Lions"
+ r56_ETH_form_the_black_lions_desc: "[ITA.GetAdjective]s must be subjected to hell by our great countrymen in the Ethiopian Highlands. The Black Lions will fight fearlessly against the [ITA.GetAdjective] occupation."
 #Ideas
  r56_ETH_outdated_military_ns: "Outdated Military"
  r56_ETH_outdated_military_ns_desc: "Our military is centuries behind our enemies. We still resort to spears and bows while the world has adapted firarms and motorized vehicles.\n\nIn addition we use medieval combat strategies which are easily outmaneuvered by the competition."
+ r56_ETH_the_christmas_offensive_ns: "The Christmas Offensive"
+ r56_ETH_the_christmas_offensive_ns_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
+ r56_ETH_black_lions_ns: "Black Lions"
+ r56_ETH_black_lions_ns_desc: "A resistance network, the Black Lions are the most feared out of any [ETH.GetAdjective]s."
 
  r56_ETH_electrification_0: "£GFX_infrastructure_texticon  Electrification: §R0§!"
  r56_ETH_electrification_1: "£GFX_infrastructure_texticon  Electrification: §91§!"
  r56_ETH_electrification_2: "£GFX_infrastructure_texticon  Electrification: §G2§!"
 #Decisions
+ r56_ETH_talyan_warara_cat: "Talyan Warära"
+ r56_ETH_talyan_warara_cat_desc: "Italy once again seeks to see Ethiopia subjugated into a mere colony. We defeated these invaders last time, and we can defeat them again if only we can remove them from our border for good!" #copy of ETH_defeat_italy_category_desc
+ r56_ETH_national_mobilization: "National Mobilization"
+
  r56_ETH_modernize_our_country_cat: "Modernize Our Country"
  r56_ETH_modernize_our_country_cat_desc: ""
  r56_ETH_electrify_state: "Electrify [FROM.GetName]"

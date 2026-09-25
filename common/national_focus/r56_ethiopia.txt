@@ -361,7 +361,7 @@ default = no
 		id = r56_ETH_enact_army_reforms
 		icon = GFX_goal_ETH_coa_army
 
-		cost = 10
+		cost = 5
 		x = 8
 		y = 14
 
@@ -410,6 +410,69 @@ default = no
 
 		search_filters = {
 			FOCUS_FILTER_MILITARY_IMPROVEMENT FOCUS_FILTER_RESEARCH
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	###---> War Tree <><> <><> <><>
+
+	focus = {
+		id = r56_ETH_launch_the_christmas_offensive
+		icon = GFX_goal_generic_cold_war
+
+		cost = 1
+		x = 3
+		y = 0
+		relative_position_id = r56_ETH_enact_army_reforms
+
+		available = {
+			has_idea = second_italo_ethiopian_war
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = r56_ETH_the_christmas_offensive_ns
+				days = 60
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = r56_ETH_national_mobilization
+		}
+
+		search_filters = {
+			FOCUS_FILTER_MILITARY_IMPROVEMENT
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_form_the_black_lions
+		icon = GFX_ITA_learn_from_the_ethiopian_war
+
+		prerequisite = {
+			focus = r56_ETH_launch_the_christmas_offensive
+			focus = r56_ETH_enact_army_reforms
+		}
+
+		cost = 3
+		x = -1
+		y = 1
+		relative_position_id = r56_ETH_launch_the_christmas_offensive
+
+		completion_reward = {
+			add_ideas = r56_ETH_black_lions_ns
+		}
+
+		search_filters = {
+			FOCUS_FILTER_MILITARY_IMPROVEMENT
 		}
 
 		ai_will_do = {
