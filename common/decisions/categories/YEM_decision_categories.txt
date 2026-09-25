@@ -1,5 +1,7 @@
 YEM_R56_plot_against_the_imam_cat = {
 
+	priority = 5
+
 	allowed = {
 		original_tag = YEM
 	}

@@ -371,7 +371,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_to_variable = {
-				YEM_R56_revolution_points = 1
+				YEM_R56_revolution_points = 199
 				tooltip = YEM_R56_revolution_points_tt
 			}
 		}
@@ -437,7 +437,7 @@ focus_tree = {
 
 		available = {
 			check_variable = {
-				var = YEM_R56_revolution_points_tt
+				var = YEM_R56_revolution_points
 				value = 10
 				compare = greater_than_or_equals
 				tooltip = YEM_R56_has_10_or_more_revolution_points_tt

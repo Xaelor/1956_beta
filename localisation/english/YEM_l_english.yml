@@ -9,6 +9,7 @@
 ###---> Ideas <><> <><> <><>
  YEM_R56_the_treaty_of_taif_ns: "The Treaty of Taif"
  YEM_R56_the_treaty_of_taif_ns_desc: "The Saudi–Yemeni war left Yemen as a rump state with huge debt and indemnities to the Saudis."
+ YEM_R56_the_treaty_of_taif_ns_tt: "--------------\nNational spirit will be removed if we control §Y[856.GetName]§!."
  YEM_R56_feudal_society_ns: "Feudal Society"
  YEM_R56_feudal_society_ns_desc: "Yemen is essentially a feudal country. Tribes are extremly powerful and no viable central government exists."
  YEM_R56_italo_yemeni_treaty_ns: "The Italo-Yemeni Treaty"
@@ -64,7 +65,7 @@
 ###---> Events <><> <><> <><>
 ###---> Decisions <><> <><> <><>
  YEM_R56_plot_against_the_imam_cat: "Plot Against the Imam"
- YEM_R56_revolution_info: "$YEM_R56_revolution_points$: [?YEM_R56_revolution_points]"
+ YEM_R56_revolution_info: "$YEM_R56_revolution_points$: §Y[?YEM_R56_revolution_points]§!"
  YEM_R56_revolution_info_desc: "If you reach 10 §Y$YEM_R56_revolution_points$§!, you can overthrow the Imam."
  YEM_R56_revolutionary_support_grows: "Revolutionary Support Grows"
 ###---> Characters <><> <><> <><>
