@@ -1,0 +1,57 @@
+#####-----> YEM: Historical AI Behavior <><> <><> <><> <><> <><>
+
+YEM_historical_plan = {
+	name = "YEM: Yemen Historical AI Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = YEM
+	}
+
+	enable = {
+		#OR = {
+		#	AND = {
+				is_historical_focus_on = yes
+		#		has_game_rule = {
+		#			rule = YEM_ai_behavior
+		#			option = DEFAULT
+		#		}
+		#	}
+		#	has_game_rule = {
+		#		rule = YEM_ai_behavior
+		#		option = HISTORICAL
+		#	}
+		#}
+	}
+
+	abort = {
+		NOT = {
+			has_government = neutrality
+		}
+	}
+
+	ai_national_focuses = {
+		YEM_R56_reinforce_imam_yahas_rule #70
+		YEM_R56_crack_down_on_autonomous_tribes #70
+		YEM_R56_continue_isolationist_policies #70
+	}
+
+	traits = {
+
+	}
+
+	focus_factors = {
+
+	}
+
+	#Keep small, as it is used as a factor for some things, such as research needs.
+	#Recommended around 1.0. Useful for relation between plans.
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+}
+
+#####-----> End of File <><> <><> <><> <><> <><>
