@@ -1,7 +1,7 @@
 ideas = {
-	
+
 	country = {
-		
+
 		r56_ETH_outdated_military_1_ns = {
 
 			name = r56_ETH_outdated_military_ns

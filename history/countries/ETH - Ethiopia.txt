@@ -18,12 +18,23 @@ set_variable = { ETH_war_escalation_length = 123 } # Six months, starting in Oct
 add_ideas = {
 	war_economy
 	limited_conscription
-	second_italo_ethiopian_war #research penalty
+	r56_ETH_crippling_illiteracy_ns
+	r56_ETH_outdated_military_1_ns
 }
 
-add_timed_idea = { #56
-	idea = ETH_christmas_offensive_idea	#56
-	days = 20	#56
+if = {
+	limit = {
+		has_dlc = "Arms Against Tyranny"
+	}
+	add_ideas = ETH_on_our_own_idea_aat
+	else = {
+		add_ideas = ETH_on_our_own_idea
+	}
+}
+
+add_timed_idea = {
+	idea = r56_ETH_the_christmas_offensive_ns
+	days = 20
 }
 
 #characters need to be recruit first before other stuff. 

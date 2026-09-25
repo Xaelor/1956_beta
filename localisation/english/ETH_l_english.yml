@@ -18,8 +18,8 @@
  r56_ETH_found_the_harar_military_academy: "Found the Harar Military Academy"
  r56_ETH_found_the_harar_military_academy_desc: "Our officers need to study modern doctrines. For this we need our own military academy in Harar, a major railway hub."
 
- r56_ETH_launch_the_christmas_offensive: "Launch the Christmas Offensive"
- r56_ETH_launch_the_christmas_offensive_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
+ r56_ETH_prolong_the_christmas_offensive: "Prolong the Christmas Offensive"
+ r56_ETH_prolong_the_christmas_offensive_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
  r56_ETH_form_the_black_lions: "Form the Black Lions"
  r56_ETH_form_the_black_lions_desc: "[ITA.GetAdjective]s must be subjected to hell by our great countrymen in the Ethiopian Highlands. The Black Lions will fight fearlessly against the [ITA.GetAdjective] occupation."
 #Ideas
@@ -46,6 +46,9 @@
  r56_ETH_increase_grid_capacity_in_state_fake: "Increase Grid Capacity In All States"
  r56_ETH_lay_electricity_lines_into_rural_areas_in_state: "Lay Electricity Lines Into Rural [FROM.GetName]"
  r56_ETH_lay_electricity_lines_into_rural_areas_in_state_fake: "Lay Electricity Lines Into Rural Areas In All States"
+#Tooltips
+ r56_ETH_second_italo_ethiopian_war_ongoing_tt: "§YThe Second Italo-Ethiopian War§! is ongoing"
+ r56_ETH_second_italo_ethiopian_war_ongoing_tt_NOT: "§YThe Second Italo-Ethiopian War§! isn't going on"
 #Old Content
  ETH_r56_defeat_italy_category:0 "Defeat Italy"
  ETH_r56_defeat_italy:0 "Defeat Italy"

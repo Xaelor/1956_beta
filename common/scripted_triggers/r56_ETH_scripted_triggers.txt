@@ -1,0 +1,12 @@
+r56_ETH_second_italo_ethiopian_war_ongoing = {
+	custom_trigger_tooltip = {
+		tooltip = r56_ETH_second_italo_ethiopian_war_ongoing_tt
+		ETH = {
+			has_war_with = ITA
+		}
+		ETH_is_in_exile = no
+		ITA = {
+			NOT = { has_country_flag = r56_ITA_vanquish_ethiopia_success }
+		}
+	}
+}

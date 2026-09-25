@@ -9,11 +9,11 @@ r56_ETH_talyan_warara_cat = {
 		}
 
 		visible = {
-			has_completed_focus = r56_ETH_launch_the_christmas_offensive
+			has_completed_focus = r56_ETH_prolong_the_christmas_offensive
 		}
 
 		available = {
-			has_completed_focus = r56_ETH_launch_the_christmas_offensive
+			has_completed_focus = r56_ETH_prolong_the_christmas_offensive
 		}
 
 		custom_cost_text = r56_15_command_power_cost

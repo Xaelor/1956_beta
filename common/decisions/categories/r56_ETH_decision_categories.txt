@@ -11,9 +11,7 @@ r56_ETH_talyan_warara_cat = {
 	}
 
 	visible = {
-		ITA = {
-			NOT = { has_country_flag = r56_ITA_vanquish_ethiopia_success }
-		}
+		r56_ETH_second_italo_ethiopian_war_ongoing = yes
 	}
 
 	visible_when_empty = yes

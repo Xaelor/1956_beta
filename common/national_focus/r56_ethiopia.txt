@@ -366,10 +366,7 @@ default = no
 		y = 14
 
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = r56_ETH_outdated_military_1_ns
-				add_idea = r56_ETH_outdated_military_2_ns
-			}
+			r56_ETH_modernize_military = yes
 		}
 
 		search_filters = {
@@ -401,10 +398,7 @@ default = no
 		}
 
 		completion_reward = {
-			swap_ideas = {
-				remove_idea = r56_ETH_outdated_military_2_ns
-				add_idea = r56_ETH_outdated_military_3_ns
-			}
+			r56_ETH_modernize_military = yes
 			add_research_slot = 1
 		}
 
@@ -420,7 +414,7 @@ default = no
 	###---> War Tree <><> <><> <><>
 
 	focus = {
-		id = r56_ETH_launch_the_christmas_offensive
+		id = r56_ETH_prolong_the_christmas_offensive
 		icon = GFX_goal_generic_cold_war
 
 		cost = 1
@@ -429,16 +423,24 @@ default = no
 		relative_position_id = r56_ETH_enact_army_reforms
 
 		available = {
-			has_idea = second_italo_ethiopian_war
-			any_enemy_country = {
-				is_major = yes
-			}
+			r56_ETH_second_italo_ethiopian_war_ongoing = yes
 		}
 
 		completion_reward = {
-			add_timed_idea = {
-				idea = r56_ETH_the_christmas_offensive_ns
-				days = 60
+			if = {
+				limit = {
+					has_idea = r56_ETH_the_christmas_offensive_ns
+				}
+				modify_timed_idea = {
+					idea = r56_ETH_the_christmas_offensive_ns
+					days = 60
+				}
+				else = {
+					add_timed_idea = {
+						idea = r56_ETH_the_christmas_offensive_ns
+						days = 60
+					}
+				}
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			unlock_decision_tooltip = r56_ETH_national_mobilization
@@ -458,14 +460,18 @@ default = no
 		icon = GFX_ITA_learn_from_the_ethiopian_war
 
 		prerequisite = {
-			focus = r56_ETH_launch_the_christmas_offensive
+			focus = r56_ETH_prolong_the_christmas_offensive
 			focus = r56_ETH_enact_army_reforms
 		}
 
 		cost = 3
 		x = -1
 		y = 1
-		relative_position_id = r56_ETH_launch_the_christmas_offensive
+		relative_position_id = r56_ETH_prolong_the_christmas_offensive
+
+		available = {
+			r56_ETH_second_italo_ethiopian_war_ongoing = yes
+		}
 
 		completion_reward = {
 			add_ideas = r56_ETH_black_lions_ns
