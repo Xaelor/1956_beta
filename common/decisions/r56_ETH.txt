@@ -8,6 +8,16 @@ ETH_second_italo_ethiopian_war_category = {
 			original_tag = ETH
 		}
 
+		visible = {
+			OR = {
+				has_completed_focus = r56_ETH_prolong_the_christmas_offensive
+				AND = {
+					is_debug = yes
+					has_global_flag = eth_dlc_focus_tree
+				}
+			}
+		}
+
 		available = {
 			has_completed_focus = r56_ETH_prolong_the_christmas_offensive
 		}
@@ -32,6 +42,47 @@ ETH_second_italo_ethiopian_war_category = {
 			add_days_mission_timeout = {
 				mission = ETH_time_based_war_escalation_mission
 				days = -30
+			}
+		}
+	}
+
+	r56_ETH_deseprate_defense = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		allowed = {
+			original_tag = ETH
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = r56_ETH_defend_our_homeland
+				AND = {
+					is_debug = yes
+					has_global_flag = eth_dlc_focus_tree
+				}
+			}
+		}
+
+		available = {
+			has_completed_focus = r56_ETH_defend_our_homeland
+		}
+
+		custom_cost_text = r56_15_command_power_cost
+
+		custom_cost_trigger = {
+			command_power > 14
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -15
+			}
+			swap_ideas = {
+				remove_idea = r56_ETH_defend_our_homeland_1_ns
+				add_idea = r56_ETH_defend_our_homeland_2_ns
 			}
 		}
 	}

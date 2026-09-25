@@ -110,6 +110,9 @@ default = no
 		y = 1
 		relative_position_id = r56_ETH_electrify_the_country
 
+		dynamic = yes
+		cancelable = yes
+
 		available = {
 			any_owned_state = {
 				is_controlled_by = ROOT
@@ -131,6 +134,18 @@ default = no
 					NOT = {
 						has_tech = steel_production_1
 					}
+				}
+				set_technology = {
+					steel_production_1 = 1
+				}
+				set_country_flag = r56_ETH_steel_tech_given_cflg
+			}
+		}
+
+		cancel_effect = {
+			if = {
+				limit = {
+					has_country_flag = r56_ETH_steel_tech_given_cflg
 				}
 				set_technology = {
 					steel_production_1 = 1
@@ -275,6 +290,8 @@ default = no
 		y = 1
 		relative_position_id = r56_ETH_establish_ethiopian_iron_and_steel
 
+		dynamic = yes
+
 		available = {
 			controls_state = 271
 		}
@@ -337,6 +354,8 @@ default = no
 		x = 2
 		y = 1
 		relative_position_id = r56_ETH_electrify_the_country
+
+		dynamic = yes
 
 		available = {
 			controls_state = 271
@@ -475,6 +494,38 @@ default = no
 
 		completion_reward = {
 			add_ideas = r56_ETH_black_lions_ns
+		}
+
+		search_filters = {
+			FOCUS_FILTER_MILITARY_IMPROVEMENT
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
+		id = r56_ETH_defend_our_homeland
+		icon = GFX_focus_generic_collective_defense
+
+		prerequisite = {
+			focus = r56_ETH_prolong_the_christmas_offensive
+		}
+
+		cost = 3
+		x = 1
+		y = 1
+		relative_position_id = r56_ETH_prolong_the_christmas_offensive
+
+		available = {
+			r56_ETH_second_italo_ethiopian_war_ongoing = yes
+		}
+
+		completion_reward = {
+			add_ideas = r56_ETH_defend_our_homeland_1_ns
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = r56_ETH_deseprate_defense
 		}
 
 		search_filters = {

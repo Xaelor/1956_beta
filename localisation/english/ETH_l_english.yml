@@ -8,9 +8,9 @@
  r56_ETH_establish_ethiopian_iron_and_steel_desc: "Manufacturing demands high quanities of industrial metals and especially steel. By investing into Steel production, we decrease our reliance on imports."
  r56_ETH_build_industrial_centeres: "Build Industrial Centeres"
  r56_ETH_build_industrial_centeres_desc: "Our economy needs to include more [ETH.GetAdjective]s. One way of achieveing this goal is by designating a few cities scattered all across this country as industrial centeres."
- r56_ETH_develop_addis_ababa: "Develop [271.GetName]"
+ r56_ETH_develop_addis_ababa: "Develop [271.GetCapitalVictoryPointName]"
  r56_ETH_develop_addis_ababa_desc: "In order to show the most of us, we need a Western European style capital with modern industries located in its proximity."
- r56_ETH_found_the_university_of_addis_ababa: "Found the University of [271.GetName]"
+ r56_ETH_found_the_university_of_addis_ababa: "Found the University of [271.GetCapitalVictoryPointName]"
  r56_ETH_found_the_university_of_addis_ababa_desc: "[ETH.GetAdjective] children are not as smart as their European counterpart. This is in part due to lack of high education."
 
  r56_ETH_enact_army_reforms: "Enact Army Reforms"
@@ -22,6 +22,8 @@
  r56_ETH_prolong_the_christmas_offensive_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
  r56_ETH_form_the_black_lions: "Form the Black Lions"
  r56_ETH_form_the_black_lions_desc: "[ITA.GetAdjective]s must be subjected to hell by our great countrymen in the Ethiopian Highlands. The Black Lions will fight fearlessly against the [ITA.GetAdjective] occupation."
+ r56_ETH_defend_our_homeland: "Defend Our Homeland"
+ r56_ETH_defend_our_homeland_desc: ""
 #Ideas
  r56_ETH_outdated_military_ns: "Outdated Military"
  r56_ETH_outdated_military_ns_desc: "Our military is centuries behind our enemies. We still resort to spears and bows while the world has adapted firarms and motorized vehicles.\n\nIn addition we use medieval combat strategies which are easily outmaneuvered by the competition."
@@ -29,12 +31,15 @@
  r56_ETH_the_christmas_offensive_ns_desc: "The saying goes: \"The best defense is offense.\" Thus we need to go on the offensive."
  r56_ETH_black_lions_ns: "Black Lions"
  r56_ETH_black_lions_ns_desc: "A resistance network, the Black Lions are the most feared out of any [ETH.GetAdjective]s."
+ r56_ETH_defend_our_homeland_ns: "Defend Our Homeland"
+ r56_ETH_defend_our_homeland_ns_desc: ""
 
  r56_ETH_electrification_0: "£GFX_infrastructure_texticon  Electrification: §R0§!"
  r56_ETH_electrification_1: "£GFX_infrastructure_texticon  Electrification: §91§!"
  r56_ETH_electrification_2: "£GFX_infrastructure_texticon  Electrification: §G2§!"
 #Decisions
  r56_ETH_national_mobilization: "National Mobilization"
+ r56_ETH_deseprate_defense: "Desperate Defense"
 
  r56_ETH_modernize_our_country_cat: "Modernize Our Country"
  r56_ETH_modernize_our_country_cat_desc: ""
