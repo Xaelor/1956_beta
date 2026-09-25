@@ -768,6 +768,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 
 		visible = {
+			has_global_flag = eth_dlc_focus_tree
 			has_completed_focus = ETH_rally_around_the_emperor 
 			NOT = { has_country_flag = ETH_host_confirmed_flag }
 			NOT = { has_completed_focus = ETH_the_emperor_stays }
@@ -837,6 +838,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 
 		visible = {
+			has_global_flag = eth_dlc_focus_tree
 			has_completed_focus = ETH_arms_purchases
 			has_global_flag = second_italo_ethiopian_war_flag
 			league_of_nations_is_active = yes 
@@ -886,6 +888,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 
 		visible = {
+			has_global_flag = eth_dlc_focus_tree
 			has_completed_focus = ETH_arms_purchases
 			has_tech = gw_artillery
 			has_global_flag = second_italo_ethiopian_war_flag
@@ -936,6 +939,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 
 		visible = {
+			has_global_flag = eth_dlc_focus_tree
 			has_completed_focus = ETH_arms_purchases
 			has_tech = tech_support 
 			has_global_flag = second_italo_ethiopian_war_flag
@@ -985,6 +989,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 
 		visible = {
+			has_global_flag = eth_dlc_focus_tree
 			has_completed_focus = ETH_arms_purchases
 			has_tech = interwar_antitank 
 			SWE = { has_tech = interwar_antitank }
@@ -1083,6 +1088,7 @@ ETH_second_italo_ethiopian_war_category = {
 		}
 	
 		activation = { 
+			has_global_flag = eth_dlc_focus_tree
 			has_war = yes 
 			has_global_flag = second_italo_ethiopian_war_flag
 		}
@@ -1299,6 +1305,7 @@ ETH_second_italo_ethiopian_war_category = {
 			271 = { is_controlled_by = ROOT }
 		}
 		activation = { 
+			has_global_flag = eth_dlc_focus_tree
 			has_war = yes 
 			has_global_flag = second_italo_ethiopian_war_flag
 			ETH = {
