@@ -20,7 +20,8 @@ focus_tree = {
 				original_tag = QAT
 				original_tag = BHR
 				original_tag = UAE
-				original_tag = OMA
+				#original_tag = OMA -- own focus tree file
+				#original_tag = YEM -- own focus tree file
 				original_tag = TUN
 				original_tag = LBA
 				original_tag = MOR
@@ -28,6 +29,9 @@ focus_tree = {
 				original_tag = KUW
 				original_tag = WES
 				original_tag = SYR
+				original_tag = LEB
+				original_tag = IMO
+
 			} 
         }
     }

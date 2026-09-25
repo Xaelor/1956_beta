@@ -11,7 +11,7 @@ ideas = {
 				}
 			}
 
-			picture = AFG_zahir_shah_idea
+			picture = r56_AFG_zahir_shah #R56
 			
 			removal_cost = -1
 			
@@ -31,7 +31,7 @@ ideas = {
 				}
 			}
 
-			picture = AFG_zahir_shah_idea
+			picture = r56_AFG_zahir_shah #R56
 			
 			removal_cost = -1
 			
@@ -53,7 +53,7 @@ ideas = {
 				}
 			}
 
-			picture = AFG_zahir_shah_idea
+			picture = r56_AFG_zahir_shah #R56
 			
 			removal_cost = -1
 			
@@ -870,6 +870,27 @@ ideas = {
 			}
 		}
 
+		AFG_new_young_afghan_movement = {
+			picture = PER_unification_initiative_idea
+
+			allowed = { 
+				original_tag = AFG 
+			}
+
+			allowed_civil_war = { 
+				OR = {
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+
+			modifier = {
+				political_power_factor = 0.05
+				research_speed_factor = 0.03
+				democratic_drift = 0.06
+			}
+		}
+
 		AFG_constructing_a_national_identity_idea = {
 			picture = AFG_economic_regionalism
 
@@ -959,7 +980,10 @@ ideas = {
 
 		AFG_expanded_the_madrasas_idea = {
 			allowed = {
-				original_tag = AFG
+				OR = {
+					original_tag = AFG
+					original_tag = KHM
+				}
 			}
 		
 			allowed_civil_war = {
@@ -1077,7 +1101,10 @@ ideas = {
 		AFG_compulsory_jizya = {
 			
 			allowed = {
-				original_tag = AFG
+				OR = {
+					original_tag = AFG
+					original_tag = KHM
+				}
 			}
 
 			picture = PER_islamic_traditions_ns
@@ -1118,7 +1145,7 @@ ideas = {
 
 		AFG_turkestan_legion_idea = {
 
-			picture = ETH_peacekeeping_forces
+			picture = AFG_turkestan_legion #R56
 			
 			allowed = {
 				always = no
@@ -1178,7 +1205,7 @@ ideas = {
 				has_completed_focus = AFG_implement_currency_controls
 			}
 			visible = {
-				has_global_flag = afg_dlc_focus_tree
+				has_global_flag = afg_dlc_focus_tree	#56
 			}
 			cost = 50
 			removal_cost = 10
@@ -1201,7 +1228,7 @@ ideas = {
 				has_completed_focus = AFG_sugar_processing
 			}
 			visible = {
-				has_global_flag = afg_dlc_focus_tree
+				has_global_flag = afg_dlc_focus_tree	#56
 			}
 			cost = 150
 			removal_cost = 10
@@ -1222,7 +1249,7 @@ ideas = {
 				has_completed_focus = AFG_rail_construction
 			}
 			visible = {
-				has_global_flag = afg_dlc_focus_tree
+				has_global_flag = afg_dlc_focus_tree	#56
 			}
 			cost = 75
 			removal_cost = 10
@@ -1242,7 +1269,7 @@ ideas = {
 				has_completed_focus = AFG_electrification
 			}
 			visible = {
-				has_global_flag = afg_dlc_focus_tree
+				has_global_flag = afg_dlc_focus_tree	#56
 			}
 			cost = 75
 			removal_cost = 10
@@ -1263,7 +1290,7 @@ ideas = {
 				has_completed_focus = AFG_enforce_western_attire
 			}
 			visible = {
-				has_global_flag = afg_dlc_focus_tree
+				has_global_flag = afg_dlc_focus_tree	#56
 			}
 			cost = 50
 			removal_cost = 10

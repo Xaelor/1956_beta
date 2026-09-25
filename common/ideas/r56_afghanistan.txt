@@ -1,99 +1,19 @@
 ideas = {
-
-	mobilization_laws = {
-		law = yes
-
-		# Afghansitan Hasht Nafari # - (Eight Man System)
-		AFG_hasht_nafari = {
-
-			picture = AFG_hasht_nafari
-
-			cost = 150
-			
-			removal_cost = -1
-			
-			level = 4 # Similair to Extensive
-
-			allowed = {
-				original_tag = AFG
-			}
-
-			visible = {
-				original_tag = AFG
-			}
-
-			allowed_to_remove = {
-				OR = {
-					if = {
-						limit = {
-							original_tag = AFG
-							has_power_balance = {
-								id = AFG_power_balance
-							}
-						}
-						power_balance_value = {
-							id = AFG_power_balance
-							value < -0.30
-						}
-					}
-					has_completed_focus = AFG_army_modernization
-					has_completed_focus = AFG_depose_the_king
-					has_completed_focus = AFG_annul_the_hasht_nafari
-					has_completed_focus = AFG_push_army_reforms
-				}
-			}
-
-			ai_will_do = {
-				factor = 0
-			}
-
-			modifier = {
-				conscription = 0.05
-				stability_factor = 0.05
-				political_power_factor = -0.10
-				war_support_factor = -0.05
-				supply_combat_penalties_on_core_factor = -0.15
-				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.10
-				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.10
-			}
-
-			on_add = {
-				if = {
-					limit = {
-						original_tag = AFG
-						has_power_balance = {
-							id = AFG_power_balance
-						}
-					}
-					add_power_balance_value = {
-						id = AFG_power_balance
-						value = 0.25
-						tooltip_side = AFG_tribal_side
-					}
-				}
-			}
-
-			on_remove = {
-				if = {
-					limit = {
-						original_tag = AFG
-						has_power_balance = {
-							id = AFG_power_balance
-						}
-					}
-					add_power_balance_value = {
-						id = AFG_power_balance
-						value = -0.25
-						tooltip_side = AFG_government_side
-					}
-				}
-			}
-
-			cancel_if_invalid = no
-		}
-	}
-
 	country = {
+		r56_AFG_royal_afghan_army_idea_dummy = {	#Real national spirit is a dynamic modifier. Used for 'Interesting Countries' window.
+			name = AFG_afghan_army
+			picture = AFG_quami
+			removal_cost = -1
+			modifier = {
+				army_org = -0.1
+				conscription_factor = 0.05
+				consumer_goods_factor = 0.05
+				army_armor_attack_factor = -0.1
+				army_armor_defence_factor = -0.1
+				planning_speed = -0.25
+				army_defence_against_major_factor = 0.1
+			}
+		}
 
 		r56_AFG_zahir_shah_idea = {
 			
@@ -349,7 +269,7 @@ ideas = {
 		}
 		AFG_mass_production = {
 			
-			picture = generic_infantry_bonus
+			picture = raj_rifle_factory_ishapore
 		
 			allowed = {
 				always = yes
@@ -370,7 +290,7 @@ ideas = {
 		}
 		AFG_foreign_tank_designs = {
 
-			picture = generic_acquire_tanks
+			picture = generic_license_production
 			
 			allowed = {
 				always = yes
@@ -467,7 +387,7 @@ ideas = {
 		}
 		AFG_bank = {
 			
-			picture = tur_balkan_central_bank_wealthy_greece
+			picture = PER_fund_state_intelligence_idea
 		
 			allowed = {
 				always = yes
@@ -484,7 +404,7 @@ ideas = {
 		}
 		AFG_bank_improved = {
 			
-			picture = tur_balkan_central_bank_wealthy_greece
+			picture = PER_fund_state_intelligence_idea
 		
 			allowed = {
 				always = yes
@@ -614,7 +534,7 @@ ideas = {
 		}
 		AFG_air_officers_academy = {
 
-			picture = generic_army_war_college
+			picture = generic_aircraft_support
 
 			allowed = {
 				always = yes
@@ -2023,13 +1943,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2063,13 +1979,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2093,13 +2005,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2124,13 +2032,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2157,13 +2061,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2188,13 +2088,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 				
@@ -2215,13 +2111,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 				
@@ -2245,13 +2137,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2275,13 +2163,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2306,13 +2190,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2338,13 +2218,9 @@ ideas = {
 			allowed_civil_war = { always = no }
 
 			cancel = {
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2404,13 +2280,9 @@ ideas = {
 						exists = no
 					}
 				}
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2444,13 +2316,9 @@ ideas = {
 						exists = no
 					}
 				}
-				AND = {
-					NOT = {
-						has_government = neutrality
-					}
-					NOT = {
-						has_government = democratic
-					}
+				OR = {
+					has_government = communism
+					has_government = fascism
 				}
 			}
 
@@ -2604,7 +2472,7 @@ ideas = {
 				political_power_factor = 0.1
 			}
 		}
-		AFG_1921_constitution = {
+		AFG_1923_constitution = {
 			
 			picture = BRA_dasp
 		

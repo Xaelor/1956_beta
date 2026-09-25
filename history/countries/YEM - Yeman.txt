@@ -85,6 +85,11 @@ ITA = { # italo-yemeni treaty of 1926
 	}
 }
 
+diplomatic_relation = { # 1934 treaty of sanaa
+	country = ENG
+	relation = non_aggression_pact
+	active = yes
+}
 
 recruit_character = YEM_imam_yahya
 recruit_character = YEM_ahmad_muhammad_numan
@@ -112,7 +117,7 @@ recruit_character = YEM_fuad_ibn_falil
 recruit_character = YEM_cecil_barrington_hurst
 recruit_character = YEM_nae_m_al_abdul
 
-country_event = {
+news_event = {
 	id = cold_war.2
 	days = 4417
 }

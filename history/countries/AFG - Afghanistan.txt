@@ -1,5 +1,22 @@
 capital = 267
 
+set_technology = {
+
+	# Extended Technologies
+	etax_doctrine = 1
+	camo = 1
+
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	gw_artillery = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	tech_support = 1
+	tech_recon = 1
+	tech_engineers = 1
+
+}
+
 if = {
 	limit = {
 		NOT = {
@@ -18,27 +35,6 @@ if = {
 			basic_light_tank_chassis = 1
 		}
 	}
-}
-
-set_technology = {
-
-	# Extended Technologies
-	etax_doctrine = 1
-	camo = 1
-
-	r56_militia_tech = 1
-	basic_train = 1
-	infantry_weapons = 1
-	infantry_weapons1 = 1
-	gw_artillery = 1
-	tech_mountaineers = 1
-	camo = 1
-	tech_trucks = 1
-	basic_train = 1
-	tech_support = 1
-	tech_recon = 1
-	tech_engineers = 1
-
 }
 
 if = {
@@ -133,7 +129,7 @@ recruit_character = AFG_muhammad_hashim
 recruit_character = AFG_nasirullah_husain
 recruit_character = AFG_humaira_begum
 recruit_character = r56_AFG_soraya_tarzi
-recruit_character = AFG_abdul_hadi_dawai
+recruit_character = AFG_abdul_hadi_dawi
 recruit_character = AFG_muhammad_ihsan_khan
 recruit_character = AFG_mohammed_etemadi_khan
 recruit_character = AFG_ali_afzal_khan
@@ -178,7 +174,7 @@ if = {	#These guys can theoretically be put on the r56 tree as long as they were
 	limit = { has_dlc = "Graveyard of Empires" }
 	recruit_character = AFG_nur_muhammad_taraki
 	recruit_character = AFG_inyatullah_khan
-	recruit_character = AFG_faqir_of_ipi
+	#recruit_character = AFG_faqir_of_ipi #R56 - Duplicate character of AFG_haji_mirzali_khan. roles accounted for in both AFG trees.
 	recruit_character = AFG_mazrak_zadran
 	recruit_character = AFG_sheikh_omar_mojadidi
 	recruit_character = GER_oskar_von_nidermayer
@@ -282,7 +278,7 @@ set_power_balance = {
 
 ####### DIPLOMACY
 
-set_country_flag = r56_AFG_tournament_of_shadows_active
+# set_country_flag = r56_AFG_tournament_of_shadows_active
 
 set_variable = {
 	AFG_tournament_of_shadows_enemy_justification_var = 0
@@ -478,7 +474,8 @@ if = {
 			tank_nsb_engine_upgrade = 2
 			tank_nsb_armor_upgrade = 0
 		}
-		icon = "gfx/interface/technologies/USA_basic_light_tank.dds"
+		model = AFG_light_armor_0_entity
+		icon = "GFX_AFG_basic_light_tank_medium"
 		obsolete = yes
 	}
 }

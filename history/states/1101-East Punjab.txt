@@ -2,7 +2,7 @@
 state={
 	id=1101
 	name="STATE_1101" #
-	manpower = 15659758 
+	manpower = 16959758 
 	
 	state_category = town
 	
@@ -14,12 +14,14 @@ state={
 		owner = RAJ
 		add_core_of = RAJ
 		add_core_of = KHL 
+		add_to_array = { state_victory_points = 10729 }
 		buildings = {
 			infrastructure = 1
 		}
 		victory_points = {
 			10729 3
 		}
+
 	}
 
 	provinces={

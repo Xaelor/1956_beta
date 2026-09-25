@@ -1151,7 +1151,14 @@ AFG_rural_schools_category = {
 
 		available = {
 			NOT = {
-				has_country_flag = AFG_opening_schools_flag
+				custom_trigger_tooltip = {
+					tooltip = AFG_opening_schools_flag
+					hidden_trigger = {
+						any_owned_state = {
+							has_state_flag = AFG_opening_schools_flag
+						}
+					}
+				}
 			}
 			has_completed_focus = AFG_rural_schools
 			original_tag = AFG
@@ -1163,7 +1170,7 @@ AFG_rural_schools_category = {
 		
 		cost = AFG_rural_schools_cost
 
-        state_target = yes
+        state_target = any_owned_state
 
 		visible = {
 			original_tag = AFG
@@ -1185,7 +1192,7 @@ AFG_rural_schools_category = {
 					state = 267
 					state = 442
 				}
-                is_owned_and_controlled_by = AFG
+                is_controlled_by = AFG
 				is_core_of = AFG
             }
         }
@@ -1195,16 +1202,18 @@ AFG_rural_schools_category = {
 		}
 
 		complete_effect = {
-			set_country_flag = {
-				flag = AFG_opening_schools_flag
-				value = 1
-				days = 90
+			FROM = {
+				set_state_flag = {
+					flag = AFG_opening_schools_flag
+					value = 1
+					days = 90
+				}
 			}
 		}
 
         remove_effect = {
-			clr_country_flag = AFG_opening_schools_flag
 			FROM = {
+				clr_state_flag = AFG_opening_schools_flag
                 set_state_flag = AFG_school_opened
 				if = {
 					limit = {
@@ -1280,6 +1289,20 @@ AFG_rural_schools_category = {
 			}
 			add_political_power = 15
         }
+
+		cancel_trigger = {
+			FROM = {
+				NOT = {
+					is_controlled_by = AFG
+				}
+			}
+		}
+
+		cancel_effect = {
+			FROM = {
+				clr_state_flag = AFG_opening_schools_flag
+			}
+		}
 
         ai_will_do = {
             base = 1
@@ -9908,10 +9931,10 @@ AFG_elections_category = {
 			custom_effect_tooltip = r56_newline
 			set_country_flag = AFG_pardoned_prisoners
 			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = AFG_abdul_hadi_dawai
+			show_ideas_tooltip = AFG_abdul_hadi_dawi
 			hidden_effect = {
 				set_portraits = {
-					character = AFG_abdul_hadi_dawai
+					character = AFG_abdul_hadi_dawi
 					civilian = { small = "GFX_idea_AFG_advisor_abdul_hadi_dawi" }
 				}
 			}
@@ -11275,10 +11298,6 @@ AFG_tournament_of_shadows = {
 			}
 		}
 
-		modifier = {
-			political_power_gain = -0.05
-		}
-
 		ai_will_do = {
 			base = 1
 			modifier = {
@@ -11893,52 +11912,52 @@ AFG_tournament_of_shadows = {
 			}
 		}
 	}
-	AFG_construction_of_german_funded_arms_plant = {
+	# AFG_construction_of_german_funded_arms_plant = {
 
-		icon = GFX_decision_generic_factory
+	# 	icon = GFX_decision_generic_factory
 
-		priority = 90
+	# 	priority = 90
 
-		days_mission_timeout = 365
+	# 	days_mission_timeout = 365
 
-		allowed = {
-			always = no
-		}
+	# 	allowed = {
+	# 		always = no
+	# 	}
 
-		available = {
-			hidden_trigger = {
-				always = no
-			}
-  		}
+	# 	available = {
+	# 		hidden_trigger = {
+	# 			always = no
+	# 		}
+  	# 	}
 
-		cancel_trigger = {
-			has_war_with = GER
-		}
+	# 	cancel_trigger = {
+	# 		has_war_with = GER
+	# 	}
 
-		targets = { GER }
+	# 	targets = { GER }
 
-		is_good = yes
+	# 	is_good = yes
 
-		fire_only_once = no
+	# 	fire_only_once = no
 
-		timeout_effect = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
+	# 	timeout_effect = {
+	# 		random_owned_controlled_state = {
+	# 			limit = {
+	# 				free_building_slots = {
+	# 					building = arms_factory
+	# 					size > 1
+	# 					include_locked = yes
+	# 				}
+	# 			}
+	# 			add_extra_state_shared_building_slots = 1
+	# 			add_building_construction = {
+	# 				type = arms_factory
+	# 				level = 1
+	# 				instant_build = yes
+	# 			}
+	# 		}
+	# 	}
+	# }
 	AFG_broker_an_arms_deal_germany = {
 
 		icon = GFX_decision_generic_industry

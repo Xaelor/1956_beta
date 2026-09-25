@@ -51,10 +51,12 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 12126;1428;sea;812;-1;-1;-1;-1;;Tanahbala-Siberut
 4306;4608;sea;5666;-1;-1;-1;-1;;Soerbaja-Madura
 7654;4273;sea;2239;-1;-1;-1;-1;;Java-Bali
-7293;4273;sea;2239;-1;-1;-1;-1;;Bali-Lombok
-7293;10191;sea;2239;-1;-1;-1;-1;;Lombok-W.Nusa Tenggara
-12162;1298;sea;2124;-1;-1;-1;-1;;West Nusa Tenggara-East Nusa Tenggara
-12151;10219;sea;5414;-1;-1;-1;-1;;East Nusa Tenggara-Pulau Alor
+7293;13502;sea;2239;-1;-1;-1;-1;;Bali-Lombok
+7293;13505;sea;2239;-1;-1;-1;-1;;Lombok-W.Nusa Tenggara
+13508;1298;sea;2124;-1;-1;-1;-1;;West Nusa Tenggara-East Nusa Tenggara
+12151;13510;sea;5414;-1;-1;-1;-1;;East Nusa Tenggara-Pulau Alor
+13510;10219;sea;5414;-1;-1;-1;-1;;East Nusa Tenggara-Pulau Alor
+10219;13511;sea;5414;-1;-1;-1;-1;;East Nusa Tenggara-Pulau Alor
 12444;10222;sea;5515;-1;-1;-1;-1;;Sulawesi-Pulau Buton
 1293;4269;sea;8751;-1;-1;-1;-1;;Surigao-Leyte
 1311;4228;sea;2856;-1;-1;-1;-1;;San Bernardino Strait
@@ -210,6 +212,7 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 8027;12653;impassable;-1;-1;-1;-1;-1;;stalinabad mountains
 7224;12653;impassable;-1;-1;-1;-1;-1;;stalinabad mountains
 7224;12314;impassable;-1;-1;-1;-1;-1;;stalinabad mountains
+12218;12314;impassable;-1;-1;-1;-1;-1;;stalinabad mountains
 12370;1766;impassable;-1;-1;-1;-1;-1;;pamir mountains
 12370;12119;impassable;-1;-1;-1;-1;-1;;pamir mountains
 12730;1116;impassable;-1;-1;-1;-1;-1;;pamir mountains
@@ -244,20 +247,14 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 3898;11779;impassable;-1;-1;-1;-1;-1;;andorran catalan pyrenees
 3899;3915;impassable;-1;-1;-1;-1;-1;;french spanish pyrenees
 915;9882;impassable;-1;-1;-1;-1;-1;;french spanish pyrenees
-6674;672;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-6674;654;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-9632;654;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-9632;9626;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-9632;1530;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-11609;1530;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-11609;4534;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-1455;6436;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-7554;6436;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-GEO'
-7554;6763;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-AZR'
-3711;6763;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-AZR'
-1450;6763;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-AZR'
-1450;11645;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-AZR'
-1450;11645;impassable;-1;-1;-1;-1;-1;;Caucasus 'SOV-AZR'
+6674;672;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+6674;654;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+9632;654;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+9632;9626;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+9632;1530;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+11609;1530;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+11609;4534;impassable;-1;-1;-1;-1;-1;;georgian russian caucasus border
+7554;6436;impassable;-1;-1;-1;-1;-1;;georgian dagestan caucasus border
 3188;9047;impassable;-1;-1;-1;-1;-1;;west norwegian mountains
 6216;9047;impassable;-1;-1;-1;-1;-1;;west norwegian mountains
 6216;11037;impassable;-1;-1;-1;-1;-1;;west norwegian mountains
@@ -328,7 +325,6 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 13366;13356;sea;9009;-1;-1;-1;-1;;Puerto Madryn-Puerto Pirámides
 12960;13353;sea;2580;-1;-1;-1;-1;;Fakland islands
 13462;7290;sea;9081;-1;-1;-1;-1;;Samoa
-10436;7269;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
 10436;4593;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
 10436;8235;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
 7570;8235;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
@@ -347,95 +343,4 @@ From;To;Type;Through;start_x;start_y;stop_x;stop_y;adjacency_rule_name;Comment
 12237;12931;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
 4418;12931;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
 4418;7409;impassable;-1;-1;-1;-1;-1;;Papuan Highlands
-2101;5075;impassable;-1;-1;-1;-1;-1;;Registan & Dasht-e Margo 'AFG-RAJ'
-4949;5075;impassable;-1;-1;-1;-1;-1;;Registan & Dasht-e Margo 'AFG-RAJ'
-4949;8013;impassable;-1;-1;-1;-1;-1;;Registan & Dasht-e Margo 'AFG-RAJ'
-5020;8013;impassable;-1;-1;-1;-1;-1;;Registan & Dasht-e Margo 'AFG-RAJ'
-2101;12895;impassable;-1;-1;-1;-1;-1;;Dasht-e Gowd-e Zareh 'AFG-PER'
-2101;1948;impassable;-1;-1;-1;-1;-1;;Dasht-e Gowd-e Zareh 'AFG-PER'
-2062;7990;impassable;-1;-1;-1;-1;-1;;Dasht-e Gowd-e Zareh 'AFG-PER'
-12871;7990;impassable;-1;-1;-1;-1;-1;;Farah-Birjand 'AFG-PER'
-2062;1948;impassable;-1;-1;-1;-1;-1;;Farah-Birjand 'AFG-PER'
-7448;5003;impassable;-1;-1;-1;-1;-1;;Karakum Desert 'AFG-SOV'
-7448;4549;impassable;-1;-1;-1;-1;-1;;Karakum Desert 'AFG-SOV'
-7448;4958;impassable;-1;-1;-1;-1;-1;;Karakum Desert 'AFG-SOV'
-7584;756;impassable;-1;-1;-1;-1;-1;;Amu Darya 'AFG-SOV'
-7584;12239;impassable;-1;-1;-1;-1;-1;;Amu Darya 'AFG-SOV'
-1889;4891;impassable;-1;-1;-1;-1;-1;;Bashagerd Mountains 'PER'
-1889;13082;impassable;-1;-1;-1;-1;-1;;Bashagerd Mountains 'PER'
-1889;2039;impassable;-1;-1;-1;-1;-1;;Bashagerd Mountains 'PER'
-2039;7982;impassable;-1;-1;-1;-1;-1;;Bashagerd Mountains 'PER'
-1986;7982;impassable;-1;-1;-1;-1;-1;;Bashagerd Mountains 'PER'
-4966;10881;impassable;-1;-1;-1;-1;-1;;Zagros Mountains 'PER'
-4966;12780;impassable;-1;-1;-1;-1;-1;;Zagros Mountains 'PER'
-4966;8031;impassable;-1;-1;-1;-1;-1;;Zagros Mountains 'PER'
-1963;4928;impassable;-1;-1;-1;-1;-1;;Zagros Mountains 'PER'
-1963;2026;impassable;-1;-1;-1;-1;-1;;Zagros Mountains 'PER'
-12852;12809;impassable;-1;-1;-1;-1;-1;;Dasht-e Lut 'PER'
-12852;11249;impassable;-1;-1;-1;-1;-1;;Dasht-e Lut 'PER'
-10759;11249;impassable;-1;-1;-1;-1;-1;;Dasht-e Lut 'PER'
-10759;10828;impassable;-1;-1;-1;-1;-1;;Dasht-e Lut 'PER'
-10759;10873;impassable;-1;-1;-1;-1;-1;;Dasht-e Lut 'PER'
-8009;10873;impassable;-1;-1;-1;-1;-1;;Dasht-e Kavir 'PER'
-12748;10873;impassable;-1;-1;-1;-1;-1;;Dasht-e Kavir 'PER'
-12748;12704;impassable;-1;-1;-1;-1;-1;;Dasht-e Kavir 'PER'
-12748;8093;impassable;-1;-1;-1;-1;-1;;Dasht-e Kavir 'PER'
-8218;5173;impassable;-1;-1;-1;-1;-1;;Magellanes Fjords/Mountains 'CHL-ARG'
-8218;12946;impassable;-1;-1;-1;-1;-1;;Magellanes Fjords/Mountains 'CHL-ARG'
-8198;12946;impassable;-1;-1;-1;-1;-1;;Magellanes Fjords/Mountains 'CHL-ARG'
-10961;12946;impassable;-1;-1;-1;-1;-1;;Magellanes Fjords/Mountains 'CHL-ARG'
-5169;8161;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5169;2199;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-8251;2215;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-8229;2215;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-8229;10992;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-8194;2179;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-8194;12928;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-12914;12928;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5192;12928;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5192;8253;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5192;8195;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5171;8195;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5171;13369;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-5146;13369;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-13363;13369;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-ARG'
-13363;2174;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-BOL'
-13361;2174;impassable;-1;-1;-1;-1;-1;;South Andes 'CHL-BOL'
-10938;8240;impassable;-1;-1;-1;-1;-1;;Andes 'BOL'
-8157;8240;impassable;-1;-1;-1;-1;-1;;Andes 'BOL'
-8157;10996;impassable;-1;-1;-1;-1;-1;;Andes 'BOL'
-8225;10996;impassable;-1;-1;-1;-1;-1;;Andes 'BOL'
-12969;10970;impassable;-1;-1;-1;-1;-1;;Andes 'PRU'
-12969;2212;impassable;-1;-1;-1;-1;-1;;Andes 'PRU'
-8191;5166;impassable;-1;-1;-1;-1;-1;;Andes 'PRU'
-10940;5166;impassable;-1;-1;-1;-1;-1;;Andes 'PRU'
-10940;2182;impassable;-1;-1;-1;-1;-1;;Andes 'PRU'
-12798;10888;impassable;-1;-1;-1;-1;-1;;Andes 'ECU'
-12798;8075;impassable;-1;-1;-1;-1;-1;;Andes 'ECU'
-10846;8075;impassable;-1;-1;-1;-1;-1;;Andes 'ECU-COL'
-10846;2007;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-2079;10846;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-2079;7936;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-2079;10790;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-2079;5026;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-10747;2023;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-10747;1887;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-7993;1887;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-7993;13491;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-12872;10790;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-12872;2023;impassable;-1;-1;-1;-1;-1;;Andes 'COL'
-8056;1944;impassable;-1;-1;-1;-1;-1;;Perija 'COL-VEN'
-1937;1944;impassable;-1;-1;-1;-1;-1;;Perija 'COL-VEN'
-1937;12772;impassable;-1;-1;-1;-1;-1;;Perija 'COL-VEN'
-12845;12772;impassable;-1;-1;-1;-1;-1;;Perija 'COL-VEN'
-1944;5088;sea;2232;-1;-1;-1;-1;;Maracaibo 'VEN'
-1997;5000;impassable;-1;-1;-1;-1;-1;;Merida 'VEN'
-8050;5083;impassable;-1;-1;-1;-1;-1;;Amazon 'VEN'
-8050;10792;impassable;-1;-1;-1;-1;-1;;Amazon 'VEN'
-10849;5317;impassable;-1;-1;-1;-1;-1;;Pacaraima 'VEN'
-10849;7915;impassable;-1;-1;-1;-1;-1;;Pacaraima 'VEN'
-10849;13416;impassable;-1;-1;-1;-1;-1;;Pacaraima 'VEN-BRA'
-13417;13416;impassable;-1;-1;-1;-1;-1;;Pacaraima 'VEN-BRA'
-13417;5214;impassable;-1;-1;-1;-1;-1;;Pacaraima 'VEN-BRA'
-12716;5214;impassable;-1;-1;-1;-1;-1;;Pacaraima 'GYA-BRA'
--1;-1;;-1;-1;-1;-1;-1;-1
+-1;-1;;-1;-1;-1;-1;-1;-1;
