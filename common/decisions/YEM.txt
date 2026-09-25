@@ -24,4 +24,27 @@ YEM_R56_plot_against_the_imam_cat = {
 
 	}
 
+	YEM_R56_revolutionary_support_grows = {
+
+		icon = GFX_decision_revolt
+
+		allowed = {
+			original_tag = YEM
+		}
+
+		activation = {
+			always = no
+		}
+
+		days_mission_timeout = 120
+
+		timeout_effect = {
+			add_to_variable = {
+				YEM_R56_revolution_points = 1
+				tooltip = YEM_R56_revolution_points_tt
+			}
+		}
+
+	}
+
 }
