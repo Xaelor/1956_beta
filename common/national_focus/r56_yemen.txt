@@ -152,7 +152,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = YEM_R56_crack_down_on_autonomous_tribes
-		cost = 10
+		cost = 5
 
 		completion_reward = {
 			add_opinion_modifier = {
