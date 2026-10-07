@@ -739,13 +739,23 @@ characters={
 				military_theorist
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -1547,13 +1557,23 @@ characters={
 				minister_of_the_interior_aregai
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -1713,9 +1733,14 @@ characters={
 			}
 			available = {
 				has_government = neutrality
-				OR = {
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
 					has_completed_focus = ETH_the_abuna
-					has_completed_focus = ETH_ensure_the_church_support
+					else = {
+						has_completed_focus = ETH_ensure_the_church_support
+					}
 				}
 						
 			}
@@ -1725,7 +1750,7 @@ characters={
 			on_add = {
 				if = {
 					limit = {
-						has_dlc = "By Blood Alone"
+						has_global_flag = eth_dlc_focus_tree
 					}
 					owner = {
 						ETH_BOP_centralization_small_effect = yes
@@ -1736,7 +1761,7 @@ characters={
 			on_remove = {
 				if = {
 					limit = {
-						has_dlc = "By Blood Alone"
+						has_global_flag = eth_dlc_focus_tree
 					}				
 					owner = {
 						ETH_BOP_decentralization_small_effect = yes
@@ -1832,13 +1857,23 @@ characters={
 				japanizer 
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -1873,13 +1908,23 @@ characters={
 				minister_of_the_interior_abate 
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -2037,13 +2082,23 @@ characters={
 				minister_of_finance_deressa
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -2080,13 +2135,23 @@ characters={
 				minister_of_finance_mariyam
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 		}
@@ -2118,13 +2183,23 @@ characters={
 				patroness_of_ethiopian_red_cross
 			}
 			on_add = {
-				owner = {
-					ETH_BOP_centralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_centralization_small_effect = yes
+					}
 				}
 			}
 			on_remove = {
-				owner = {
-					ETH_BOP_decentralization_small_effect = yes
+				if = {
+					limit = {
+						has_global_flag = eth_dlc_focus_tree
+					}
+					owner = {
+						ETH_BOP_decentralization_small_effect = yes
+					}
 				}
 			}
 		}
