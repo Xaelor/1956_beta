@@ -50,8 +50,6 @@
  r56_ETH_lay_electricity_lines_into_rural_areas_in_state: "Lay Electricity Lines Into Rural [FROM.GetName]"
  r56_ETH_lay_electricity_lines_into_rural_areas_in_state_fake: "Lay Electricity Lines Into Rural Areas In All States"
 #Tooltips
- r56_ETH_second_italo_ethiopian_war_ongoing_tt: "§YThe Second Italo-Ethiopian War§! is ongoing"
- r56_ETH_second_italo_ethiopian_war_ongoing_tt_NOT: "§YThe Second Italo-Ethiopian War§! isn't going on"
 #Old Content
  ETH_r56_defeat_italy_category:0 "Defeat Italy"
  ETH_r56_defeat_italy:0 "Defeat Italy"

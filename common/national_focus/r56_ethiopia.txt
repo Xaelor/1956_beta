@@ -442,7 +442,7 @@ default = no
 		relative_position_id = r56_ETH_enact_army_reforms
 
 		available = {
-			r56_ETH_second_italo_ethiopian_war_ongoing = yes
+			has_global_flag = second_italo_ethiopian_war_flag
 		}
 
 		completion_reward = {
@@ -489,7 +489,7 @@ default = no
 		relative_position_id = r56_ETH_prolong_the_christmas_offensive
 
 		available = {
-			r56_ETH_second_italo_ethiopian_war_ongoing = yes
+			has_global_flag = second_italo_ethiopian_war_flag
 		}
 
 		completion_reward = {
@@ -519,7 +519,7 @@ default = no
 		relative_position_id = r56_ETH_prolong_the_christmas_offensive
 
 		available = {
-			r56_ETH_second_italo_ethiopian_war_ongoing = yes
+			has_global_flag = second_italo_ethiopian_war_flag
 		}
 
 		completion_reward = {
