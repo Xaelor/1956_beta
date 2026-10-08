@@ -343,6 +343,96 @@ default = no
 	}
 
 	focus = {
+		id = r56_ETH_connect_the_country
+		icon = GFX_goal_COG_Jungle_Railroad
+
+		prerequisite = {
+			focus = r56_ETH_build_industrial_centeres
+		}
+		prerequisite = {
+			focus = r56_ETH_develop_addis_ababa
+		}
+
+		cost = 10
+		x = 1
+		y = 1
+		relative_position_id = r56_ETH_build_industrial_centeres
+
+		available = {
+			550 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			559 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			271 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			842 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			843 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			836 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			559 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+		}
+
+		completion_reward = {
+			build_railway = {
+				path = { 12766 13287 2072 7944 5097 13288 5010 8036 10775 13297 4995 }
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	focus = {
 		id = r56_ETH_found_the_university_of_addis_ababa
 		icon = GFX_goal_research_silver
 

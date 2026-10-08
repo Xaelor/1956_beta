@@ -10,6 +10,8 @@
  r56_ETH_build_industrial_centeres_desc: "Our economy needs to include more [ETH.GetAdjective]s. One way of achieveing this goal is by designating a few cities scattered all across this country as industrial centeres."
  r56_ETH_develop_addis_ababa: "Develop [271.GetCapitalVictoryPointName]"
  r56_ETH_develop_addis_ababa_desc: "In order to show the most of us, we need a Western European style capital with modern industries located in its proximity."
+ r56_ETH_connect_the_country: "Connect the Country"
+ r56_ETH_connect_the_country_desc: "Our country is separated from itself by the vast Ethiopian Highlands. Travel times between major cities can take multiple days. Proper rail and road networks can cut this to hours."
  r56_ETH_found_the_university_of_addis_ababa: "Found the University of [271.GetCapitalVictoryPointName]"
  r56_ETH_found_the_university_of_addis_ababa_desc: "[ETH.GetAdjective] children are not as smart as their European counterpart. This is in part due to lack of high education."
 
