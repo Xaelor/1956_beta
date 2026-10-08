@@ -135,7 +135,7 @@ focus_tree = {
 
 	focus = {
 		id = SPR_the_army_of_africa_connection
-		icon = GFX_goal_EGY_suspend
+		icon = GFX_goal_islam_and_state
 		prerequisite = { focus = SPR_establish_a_conspiracy }
 		relative_position_id = SPR_back_the_ceda
 		x = 0
@@ -1773,15 +1773,22 @@ focus_tree = {
 		}
 		x = 10
 		y = 2
-			ai_will_do = {
-					factor = 5
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+			controls_state = 177
+			controls_state = 178
+			controls_state = 297
+		}
+		completion_reward = {
+				add_tech_bonus = {
+					name = FRA_fortification_focus
+					bonus = 1
+					uses = 1
+					category = cat_fortification
 				}
-			available = {
-					controls_state = 177
-					controls_state = 178
-					controls_state = 297
-				}
-			completion_reward = {
+				custom_effect_tooltip = generic_skip_one_line_tt
 					custom_effect_tooltip = SPR_Island_Forts
 					hidden_effect = {
 							177 = {

@@ -13,11 +13,16 @@ characters={
 		advisor={
 			slot = political_advisor
 			idea_token = GXC_li_zongren
-			allowed  = {
-				original_tag  = GXC
+			allowed = {
+				original_tag = GXC
 			}
-			traits  = {
-				prince_of_terror 
+			traits = {
+				GXC_head_of_guangxi
+			}
+			available = { is_country_leader = no }
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
 			}
 		}
 		field_marshal = {
@@ -32,7 +37,7 @@ characters={
 			ideology= military_junta
 			expire="1965.1.1"
 			traits = {
-				hardened_officer
+				GXC_head_of_guangxi
 			}
 			id=-1
 		}
@@ -40,7 +45,7 @@ characters={
 			ideology=ultranationalism
 			expire="1965.1.1"
 			traits = {
-				hardened_officer
+				GXC_head_of_guangxi
 			}
 			id=-1
 		}
@@ -48,7 +53,7 @@ characters={
 			ideology= agrarian_socialism
 			expire="1965.1.1"
 			traits = {
-				hardened_officer
+				GXC_head_of_guangxi
 			}
 			id=-1
 		}	
@@ -56,7 +61,7 @@ characters={
 			ideology= populism
 			expire="1965.1.1"
 			traits = {
-				hardened_officer
+				GXC_head_of_guangxi
 			}
 			id=-1
 		}		
@@ -72,52 +77,77 @@ characters={
 #  Ma Bacui commander of the 7th army
 
 	GXC_bai_chongxi={
-		name="Bai Chongxi"
-		portraits={
-			army={
-				large="gfx/leaders/GXC/r56_portrait_GXC_Bai_Chongxi.dds"
-				small="gfx/interface/ideas/idea_asia_generic_land_1.dds"
-			}
-		}
-		advisor={
-			slot = army_chief
-			idea_token = GXC_bai_chongxi
+		instance = {
 			allowed = {
-				original_tag = GXC
+				has_dlc = "No Compromise, No Surrender"
 			}
-			traits = {
-				army_chief_offensive_2
-			}
-				cost = 100
-			ai_will_do = {
-				factor = 1.000
-			}
-		}
-		advisor={
-			slot = navy_chief
-			idea_token = GXC_bai_chongxi2
-			allowed = {
-				OR = {
-					original_tag  = GXC
-					original_tag  = GDC
+			name="Bai Chongxi"
+			portraits={
+				army={
+					large="GFX_Portrait_GXC_bai_chongxi"
+					small="GFX_Portrait_GXC_bai_chongxi_small"
 				}
 			}
-			traits = {
-				navy_chief_reform_2
+			advisor={
+				slot = army_chief
+				idea_token = GXC_bai_chongxi
+				allowed = {
+					original_tag = GXC
+				}
+				traits = {
+					GXC_architect_of_the_new_guangxi_army
+				}
+					cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
 			}
-			cost = 100
-			ai_will_do = {
-				factor = 1.000
+			corps_commander={
+				traits = { hill_fighter trickster homeland_connoisseur }
+				skill = 4
+				attack_skill = 3
+				defense_skill = 4
+				planning_skill = 3
+				logistics_skill = 4
+				legacy_id=-1
 			}
-		}		
-		corps_commander={
-			traits = { hill_fighter trickster homeland_connoisseur }
-			skill = 4
-			attack_skill = 3
-			defense_skill = 4
-			planning_skill = 3
-			logistics_skill = 4
-			legacy_id=-1
+		}
+		instance = {
+			allowed = {
+				NOT = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+			}
+			name="Bai Chongxi"
+			portraits={
+				army={
+					large="GFX_Portrait_r56_GXC_bai_chongxi"
+					small="GFX_Portrait_r56_GXC_bai_chongxi_small"
+				}
+			}
+			advisor={
+				slot = army_chief
+				idea_token = GXC_bai_chongxi
+				allowed = {
+					original_tag = GXC
+				}
+				traits = {
+					GXC_architect_of_the_new_guangxi_army
+				}
+					cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+			}
+			corps_commander={
+				traits = { hill_fighter trickster homeland_connoisseur }
+				skill = 4
+				attack_skill = 3
+				defense_skill = 4
+				planning_skill = 3
+				logistics_skill = 4
+				legacy_id=-1
+			}
 		}
 	}
 
@@ -360,7 +390,10 @@ characters={
 			slot = air_chief
 			idea_token = GXC_feng_huang
 			allowed = {
-				original_tag = GXC
+				OR = {
+					original_tag = GXC
+					original_tag = GDC # in case of clique fusion
+				}
 			}
 			traits = {
 				air_chief_ground_support_2
@@ -540,6 +573,22 @@ characters={
 					small=GFX_idea_generic_army_asia_6
 				}
 			}
+			advisor={
+				slot = political_advisor
+				idea_token = GXC_chen_jitang
+				allowed = {
+					original_tag = GXC
+				}
+				traits = {
+					GXC_architect_of_guangdong
+				}
+				
+				available = { is_country_leader = no }
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+			}
 			field_marshal={
 				skill=3
 				attack_skill=2
@@ -556,7 +605,7 @@ characters={
 			}
 			country_leader={
 				ideology=despotism
-				traits={ GDC_king_of_the_southern_skies }
+				traits={ GXC_architect_of_guangdong }
 				expire="1965.1.1.1"
 				id=-1
 			}
@@ -570,6 +619,21 @@ characters={
 				army={
 					large= GFX_portrait_GDC_chen_jitang
 					small = GFX_portrait_GDC_chen_jitang_small
+				}
+			}
+			advisor={
+				slot = political_advisor
+				idea_token = GXC_chen_jitang
+				allowed = {
+					original_tag = GXC
+				}
+				traits = {
+					GXC_architect_of_guangdong
+				}
+				available = { is_country_leader = no }
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
 				}
 			}
 			field_marshal={
@@ -589,7 +653,7 @@ characters={
 
 			country_leader={
 				ideology=despotism
-				traits={ GDC_king_of_the_southern_skies }
+				traits={ GXC_architect_of_guangdong }
 				expire="1965.1.1.1"
 				id=-1
 			}

@@ -1,28 +1,4683 @@
 r56_chinese_gui_category = {
-	r56_chinese_gui_hide = {
-		icon = icon_kuomintang
+	GXC_tensions_approach_a_breaking_point = {
+		icon = GFX_decision_SWI_consolidate_council_power
+		activation = {
+			always = no
+		}
 		available = {
-			
+			always = no
 		}
-		visible = {
-			NOT = { has_country_flag = r56_chinese_gui_flag }
+		cancel_trigger = {
+			OR = {
+				has_completed_focus = CHI_break_the_back_of_the_kmt_forces
+				has_completed_focus = CHI_a_religion_of_peace
+			}
 		}
+		fire_only_once = yes
+		is_good = no
+		days_mission_timeout = 100
+		selectable_mission = no
 		complete_effect = {
-			set_country_flag = r56_chinese_gui_flag
+		}
+		timeout_effect = {
+			custom_effect_tooltip = GXC_liangguang_ends_tt
+			clr_country_flag = GXC_liangguang_crisis_active
+			hidden_effect = {
+				GXC = {
+					IF = {
+						limit = {
+							has_country_flag = GXC_no_guangxi_flag
+						}
+						country_event = GXC_event.1
+					}
+					else_if = {
+						limit = {
+							has_completed_focus = GXC_secure_guangxi_loyalties
+						}
+						country_event = GXC_event.4
+					}
+				}
+			}
 		}
 	}
-}
-r56_chinese_gui_mock_category = {
-	r56_chinese_gui_show = {
-		icon = icon_kuomintang
-		available = {
+	GXC_invite_from_to_the_anti_chiang_coalition = {
+		icon = GFX_decision_generic_protection
+		cost = 35
+		cancel_trigger = {
 			
+			FROM = {
+				OR = {
+					is_subject = yes
+					is_in_faction = yes
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				is_subject = no
+				is_in_faction = no
+			}
+		}
+		available = {
+			IF = {
+				limit = {
+					FROM = { original_tag = HBC }
+				}
+				SHX = { has_country_flag = GXC_anti_chiang_coa_flag }
+				SND = { has_country_flag = GXC_anti_chiang_coa_flag }
+			}
+			IF = {
+				limit = { FROM = {original_tag = SND }}
+				SHX = { has_country_flag = GXC_anti_chiang_coa_flag }
+			}
+			IF = {
+				limit = {
+					FROM = { original_tag = XIC }
+
+				}
+				has_country_flag = GXC_anti_japanese_fearmongering_flag
+			}
 		}
 		visible = {
-			has_country_flag = r56_chinese_gui_flag
+			has_country_flag = GXC_liangguang_selected
+			OR = {
+				has_country_flag = GXC_liangguang_crisis_active
+				has_country_flag = GXC_liangguang_crisis_incoming
+			}
+			has_completed_focus = GXC_prepare_a_second_anti_chiang_coalition
+		}
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { YUN SHX SIC XIC SND HBC }
+		complete_effect = {
+			FROM = {
+				country_event = GXC_event.5
+			}
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = {
+				
+				reduce_focus_completion_cost = {
+					focus = { GXC_secure_guangxi_loyalties }
+					cost = 7
+				}
+				
+				FROM = { custom_effect_tooltip = GXC_join_anti_chiang_coalition_tt }
+			}
+		}
+	}
+	KMT_offer_access_to_the_sea = {
+		icon = GFX_decision_SWE_set_navy_budget
+		visible = {
+			OR = {
+				has_country_flag = GXC_liangguang_selected
+				has_country_flag = r56_chinese_gui_guangxi_selected
+			}
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+			GXC = { NOT = { has_country_flag = GXC_nanlu_gxc}}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			custom_effect_tooltip = KMT_offer_access_to_the_sea_tt
+			#add_to_variable = {
+			#	GXC_guangxi_support = -2
+			#}
+			hidden_effect = {
+				GXC = {
+					set_country_flag = GXC_nanlu_gxc
+					country_event = GXC_event.1
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1112
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	KMT_back_channel_negotitations_with_guangxi = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 20
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = KMT_back_channel_negotitations_with_guangxi_tt
+			add_to_variable = {
+				GXC_guangxi_support = -1
+			}
+		}
+	}
+	KMT_ensure_guangxi_non_interferance = {
+		icon = GFX_decision_border_war
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = KMT_ensure_guangxi_non_interferance_trigger_tt
+				check_variable = {
+					GXC_guangxi_support < -3
+				}
+			}
+		}
+		cost = 15
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = KMT_ensure_guangxi_non_interferance_tt
+			
+			GXC = {
+				set_country_flag = GXC_no_guangxi_flag
+				country_event = GXC_event.5
+			}
+		}
+	}
+	KMT_defection_incentives = {
+		icon = GFX_decision_hol_attract_foreign_investors
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 20
+		cost = 5
+		complete_effect = {
+			custom_effect_tooltip = KMT_defection_incentives_tt
+			add_to_variable = {
+				GXC_guangxi_support = -0.5
+			}
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -5
+				}
+			}
+		}
+	}
+	KMT_ready_the_army = {
+		icon = r56_decision_soldiers_icon
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		custom_cost_text = decision_cost_CP_25
+		custom_cost_trigger = {
+			command_power > 24.99
+		}
+		days_remove = 35
+		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = { add_command_power = -25 }
+		}
+		remove_effect = {
+			set_country_flag = KMT_ready_the_army_flag
+			unlock_decision_tooltip = KMT_demand_guangdong_subjugation
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -20
+				}
+			}
+		}
+	}
+	KMT_demand_guangdong_subjugation = {
+		icon = GFX_decision_eng_trade_unions_demand
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+			has_country_flag = KMT_ready_the_army_flag
+		}
+		available = {
+			army_manpower_in_state = {
+				amount > 150000
+				state = 600
+			}
+			army_manpower_in_state = {
+				amount > 150000
+				state = 595
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		fire_only_once = yes
+		custom_cost_text = decision_cost_CP_25
+		custom_cost_trigger = {
+			command_power > 24.99
+		}
+		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = { add_command_power = -25 }
+		}
+		days_remove = 15
+		remove_effect = {
+			add_war_support = 0.03
+			GXC = {
+				country_event = GXC_event.4
+			}
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -35
+				}
+			}
+		}
+	}
+	GXC_ready_the_military = {
+		icon = r56_decision_soldiers_icon
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			has_country_flag = GXC_liangguang_crisis_active
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		fire_only_once = yes
+		custom_cost_trigger = {
+			command_power > 24.9
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -20
+				}
+			}
+		}
+		days_remove = 25
+		remove_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 producer = ROOT }
+			army_experience = 25
+			custom_effect_tooltip = generic_skip_one_line_tt
+			remove_ideas = GXC_demobilized_state
+		}
+	}
+	GXC_prepare_defensive_postures = {
+		icon = GFX_decision_generic_mountain_fortification
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			has_country_flag = GXC_liangguang_crisis_active
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		fire_only_once = yes
+		custom_cost_trigger = {
+			command_power > 49.9
+		}
+		custom_cost_text = decision_cost_CP_50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+		days_remove = 25
+		remove_effect = {
+			593 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9970
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 1120
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 1162
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 1078
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 9938
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 4165
+					instant_build = yes
+				}
+			}
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -10
+				}
+			}
+		}
+		highlight_states = {
+			highlight_provinces = { 4165 9938 1078 1162 1120 9970 }
+		}
+	}
+	GXC_request_access_to_the_sea = {
+		icon = GFX_decision_SWE_set_navy_budget
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			has_country_flag = GXC_liangguang_crisis_active
+			NOT = { has_country_flag = GXC_nanlu_gxc}
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			CHI = { country_event = GXC_event.2}
+			custom_effect_tooltip = if_they_accept_tt
+			custom_effect_tooltip = KMT_offer_access_to_the_sea_tt
+			
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1112
+			}
+		}
+	}
+	GXC_claim_succession_to_hu = {
+		icon = GFX_decision_icon_kuomintang
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		fire_only_once = yes
+		cost = 35
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GXC_aftershock_of_hu_hanmins_death
+				add_idea = GXC_hu_hanmins_legacy
+			}
+			custom_effect_tooltip = GXC_woo_guangxi_tt
+			add_to_variable = {
+				GXC_guangxi_support = 1
+			}
+		}
+	}
+	GXC_woo_guangxi = {
+		icon = GFX_decision_generic_political_address
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		days_re_enable = 30
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = GXC_woo_guangxi_tt
+			add_to_variable = {
+				GXC_guangxi_support = 1
+			}
+		}
+	}
+	#GXC_rally_legitmacy
+	#GXC_anti_japanese_fearmongering
+	GXC_back_channel_negotiations_with_nanjing = {
+		icon = GFX_decision_generic_political_discourse
+		visible = {
+			always = no #todo
+			has_country_flag = GXC_liangguang_selected
+			GXC = { has_country_flag = GXC_liangguang_crisis_active }
+		}
+		allowed = {
+			original_tag = GXC
+		}
+		days_re_enable = 30
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			custom_effect_tooltip = KMT_ensure_guangxi_non_interferance_tt
+			CHI = {
+				country_event = GXC_event.3
+			}
+			set_country_flag = GXC_no_guangxi_flag
+			every_country = {
+				limit = {
+					has_active_mission = GXC_tensions_approach_a_breaking_point
+				}
+				add_days_mission_timeout = {
+					mission = GXC_tensions_approach_a_breaking_point
+					days = -30
+				}
+			}
+			
+		}
+	}
+	KMT_view_chinese_mio_locations = {
+		icon = icon_kuomintang
+		visible = {
+			always = yes
+		}
+		custom_cost_trigger = {
+			always = no
 		}
 		complete_effect = {
-			clr_country_flag = r56_chinese_gui_flag			
+			every_state = {
+				limit = { has_state_flag = CHI_shanghai_arsenal_flag}
+				custom_effect_tooltip = CHI_shanghai_arsenal_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_jinling_arsenal_organization_flag}
+				custom_effect_tooltip = CHI_jinling_arsenal_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag}
+				custom_effect_tooltip = CHI_kiangnan_shipyard_group_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_dagu_shipyard_organization_flag}
+				custom_effect_tooltip = CHI_dagu_shipyard_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_sinaw_organization_flag}
+				custom_effect_tooltip = CHI_sinaw_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_mukden_arsenal_organization_flag}
+				custom_effect_tooltip = CHI_mukden_arsenal_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_taiyuan_arsenal_organization_flag}
+				custom_effect_tooltip = CHI_taiyuan_arsenal_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_china_automobile_corporation_organization_flag}
+				custom_effect_tooltip = CHI_china_automobile_corporation_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_hanyan_arsenal_organization_flag}
+				custom_effect_tooltip = CHI_hanyan_arsenal_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_liaoning_arsenal_organization_flag}
+				custom_effect_tooltip = CHI_liaoning_arsenal_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_dalian_shipyard_organzation_flag}
+				custom_effect_tooltip = CHI_dalian_shipyard_organzation_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_taku_shipyard_organization_flag}
+				custom_effect_tooltip = CHI_taku_shipyard_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag}
+				custom_effect_tooltip = CHI_naval_air_establishment_shanghai_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag}
+				custom_effect_tooltip = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag}
+				custom_effect_tooltip = CHI_chengdu_aviation_research_institute_organization_flag
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			every_state = {
+				limit = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag}
+				custom_effect_tooltip = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 328
+				state = 744
+				state = 602
+				state = 644
+				state = 1114
+				state = 1115
+				state = 608
+				state = 600
+				state = 716
+				state = 943
+				state = 1117
+				state = 615
+				state = 1116
+				state = 325
+				state = 1120
+				state = 613
+				state = 592
+				state = 594
+			}
+		}
+	}
+	KMT_unselect_mio_dec = {
+		icon = GFX_decision_generic_industry
+		visible = {
+			OR = {
+				has_country_flag = CHI_shanghai_arsenal_selected_flag
+				has_country_flag = CHI_liaoning_arsenal_organization_selected_flag
+				has_country_flag = CHI_jinling_arsenal_organization_selected_flag
+				has_country_flag = CHI_kiangnan_shipyard_group_organization_selected_flag
+				has_country_flag = CHI_dagu_shipyard_organization_selected_flag
+				has_country_flag = CHI_sinaw_organization_selected_flag
+				has_country_flag = CHI_mukden_arsenal_organization_selected_flag
+				has_country_flag = CHI_taiyuan_arsenal_organization_selected_flag
+				has_country_flag = CHI_china_automobile_corporation_organization_selected_flag
+				has_country_flag = CHI_hanyan_arsenal_organization_selected_flag
+				has_country_flag = CHI_taku_shipyard_organization_selected_flag
+				has_country_flag = CHI_dalian_shipyard_organization_selected_flag
+				has_country_flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_selected_flag
+				has_country_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_selected_flag
+				has_country_flag = CHI_naval_air_establishment_shanghai_organization_selected_flag
+				has_country_flag = CHI_chengdu_aviation_research_institute_organization_selected_flag
+			}
+		}
+		complete_effect = {
+			r56_chinese_gui_clear_mio_selection = yes
+		}
+	}
+	KMT_select_shanghai_arsenal_dec = {
+		icon = GFX_decision_generic_merge_plant_tank
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					593 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					594 = { has_state_flag = CHI_shanghai_arsenal_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					715 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					328 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					943 = { has_state_flag = CHI_shanghai_arsenal_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_shanghai_arsenal_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_shanghai_arsenal_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_shanghai_arsenal_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					1120 = { has_state_flag = CHI_shanghai_arsenal_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					613 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					1115 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					600 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					602 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					608 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					744 = { has_state_flag = CHI_shanghai_arsenal_flag }
+					1117 = { has_state_flag = CHI_shanghai_arsenal_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_shanghai_arsenal_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+					custom_effect_tooltip = CHI_shanghai_arsenal_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_shanghai_arsenal_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_shanghai_arsenal = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			has_country_flag = CHI_shanghai_arsenal_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_shanghai_arsenal_flag
+			}
+			is_ai = no
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_shanghai_arsenal = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_shanghai_arsenal_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_shanghai_arsenal_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_shanghai_arsenal_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_shanghai_arsenal_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_shanghai_arsenal_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_shanghai_arsenal_moving
+				value = 1
+				days = 25
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		remove_effect = {
+			mio:CHI_shanghai_arsenal = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_shanghai_arsenal_flag}
+					clr_state_flag = CHI_shanghai_arsenal_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_shanghai_arsenal_flag }
+		}
+	}
+	KMT_select_liaoning_arsenal_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_tank
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					593 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					594 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					715 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					328 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					943 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					1120 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					613 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					1115 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					600 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					602 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					608 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					744 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+					1117 = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_liaoning_arsenal_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_liaoning_arsenal_organization_flag
+					}
+					custom_effect_tooltip = CHI_liaoning_arsenal_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_liaoning_arsenal_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_select_china_automobile_corporation_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_tank
+		visible = {
+			is_ai = no
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					593 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					594 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					715 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					328 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					943 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					1120 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					613 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					1115 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					600 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					602 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					608 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					744 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+					1117 = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_china_automobile_corporation_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_china_automobile_corporation_organization_flag
+					}
+					custom_effect_tooltip = CHI_china_automobile_corporation_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_china_automobile_corporation_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_select_kiangnan_shipyard_group_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_ship
+		visible = {
+			is_ai = no
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					593 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					594 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					715 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					328 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					943 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					1120 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					613 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					1115 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					600 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					602 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					608 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					744 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+					1117 = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+					}
+					custom_effect_tooltip = CHI_kiangnan_shipyard_group_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_kiangnan_shipyard_group_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_kiangnan_shipyard_group_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_kiangnan_shipyard_group_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_kiangnan_shipyard_group_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_kiangnan_shipyard_group_organization_to_FROM = {
+		icon = GFX_decision_generic_human_torpedo
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_kiangnan_shipyard_group_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_kiangnan_shipyard_group_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_kiangnan_shipyard_group_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_kiangnan_shipyard_group_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_kiangnan_shipyard_group_organization_flag}
+					clr_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_kiangnan_shipyard_group_organization_flag }
+		}
+	}
+	KMT_invest_into_liaoning_arsenal_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			has_country_flag = CHI_liaoning_arsenal_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_liaoning_arsenal_organization_flag
+			}
+			is_ai = no
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_liaoning_arsenal_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_liaoning_arsenal_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_liaoning_arsenal_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_liaoning_arsenal_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_liaoning_arsenal_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_liaoning_arsenal_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			has_country_flag = CHI_liaoning_arsenal_organization_selected_flag
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_liaoning_arsenal_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_liaoning_arsenal_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_liaoning_arsenal_organization_flag}
+					clr_state_flag = CHI_liaoning_arsenal_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_liaoning_arsenal_organization_flag }
+		}
+	}
+	KMT_select_dagu_shipyard_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_ship
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					593 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					594 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					715 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					328 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					943 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					1120 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					613 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					1115 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					600 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					602 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					608 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					744 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+					1117 = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_dagu_shipyard_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_dagu_shipyard_organization_flag
+					}
+					custom_effect_tooltip = CHI_dagu_shipyard_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_dagu_shipyard_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_dagu_shipyard_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_dagu_shipyard_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_dagu_shipyard_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_dagu_shipyard_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_dagu_shipyard_organization_to_FROM = {
+		icon = GFX_decision_generic_human_torpedo
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_dagu_shipyard_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_dagu_shipyard_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_dagu_shipyard_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_dagu_shipyard_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_dagu_shipyard_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_dagu_shipyard_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_dagu_shipyard_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_dagu_shipyard_organization_flag}
+					clr_state_flag = CHI_dagu_shipyard_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_dagu_shipyard_organization_flag }
+		}
+	}
+	KMT_select_taku_shipyard_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_ship
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					593 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					594 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					715 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					328 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					943 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					1120 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					613 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					1115 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					600 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					602 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					608 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					744 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+					1117 = { has_state_flag = CHI_taku_shipyard_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_taku_shipyard_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_taku_shipyard_organization_flag
+					}
+					custom_effect_tooltip = CHI_taku_shipyard_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_taku_shipyard_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_taku_shipyard_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			has_country_flag = CHI_taku_shipyard_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_taku_shipyard_organization_flag
+			}
+			is_ai = no
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_taku_shipyard_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_taku_shipyard_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_taku_shipyard_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_taku_shipyard_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_taku_shipyard_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_taku_shipyard_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_taku_shipyard_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_taku_shipyard_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_taku_shipyard_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_taku_shipyard_organization_flag}
+					clr_state_flag = CHI_taku_shipyard_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_taku_shipyard_organization_flag }
+		}
+	}
+	KMT_select_dalian_shipyard_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_ship
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					593 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					594 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					715 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					328 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					943 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					1120 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					613 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					1115 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					600 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					602 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					608 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					744 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+					1117 = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_dalian_shipyard_organzation_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_dalian_shipyard_organzation_flag
+					}
+					custom_effect_tooltip = CHI_dalian_shipyard_organzation_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_dalian_shipyard_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_dalian_shipyard_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			has_country_flag = CHI_dalian_shipyard_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_dalian_shipyard_organzation_flag
+			}
+			is_ai = no
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_dalian_shipyard_organzation = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_dalian_shipyard_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_dalian_shipyard_organzation_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_dalian_shipyard_organzation_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_dalian_shipyard_organzation_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_dalian_shipyard_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_dalian_shipyard_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_dalian_shipyard_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_dalian_shipyard_organzation = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_dalian_shipyard_organzation_flag}
+					clr_state_flag = CHI_dalian_shipyard_organzation_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_dalian_shipyard_organzation_flag }
+		}
+	}
+	KMT_select_jinling_arsenal_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					593 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					594 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					715 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					328 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					943 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					1120 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					613 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					1115 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					600 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					602 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					608 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					744 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+					1117 = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_jinling_arsenal_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_jinling_arsenal_organization_flag
+					}
+					custom_effect_tooltip = CHI_jinling_arsenal_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_jinling_arsenal_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_jinling_arsenal_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_jinling_arsenal_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_jinling_arsenal_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_jinling_arsenal_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_jinling_arsenal_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_jinling_arsenal_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_jinling_arsenal_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_jinling_arsenal_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_jinling_arsenal_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_jinling_arsenal_organization_selected_flag
+				is_ai = yes 
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_jinling_arsenal_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_jinling_arsenal_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_jinling_arsenal_organization_flag}
+					clr_state_flag = CHI_jinling_arsenal_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_jinling_arsenal_organization_flag }
+		}
+	}
+	KMT_select_mukden_arsenal_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					593 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					594 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					715 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					328 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					943 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					1120 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					613 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					1115 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					600 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					602 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					608 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					744 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+					1117 = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_mukden_arsenal_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_mukden_arsenal_organization_flag
+					}
+					custom_effect_tooltip = CHI_mukden_arsenal_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_mukden_arsenal_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_mukden_arsenal_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_mukden_arsenal_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_mukden_arsenal_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_mukden_arsenal_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_mukden_arsenal_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_mukden_arsenal_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_mukden_arsenal_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_mukden_arsenal_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_mukden_arsenal_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_mukden_arsenal_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_mukden_arsenal_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_mukden_arsenal_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_mukden_arsenal_organization_flag}
+					clr_state_flag = CHI_mukden_arsenal_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_mukden_arsenal_organization_flag }
+		}
+	}
+	KMT_select_taiyuan_arsenal_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					593 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					594 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					715 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					328 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					943 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					1120 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					613 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					1115 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					600 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					602 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					608 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					744 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+					1117 = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_taiyuan_arsenal_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_taiyuan_arsenal_organization_flag
+					}
+					custom_effect_tooltip = CHI_taiyuan_arsenal_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_taiyuan_arsenal_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_taiyuan_arsenal_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_taiyuan_arsenal_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_taiyuan_arsenal_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_taiyuan_arsenal_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_taiyuan_arsenal_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_taiyuan_arsenal_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_taiyuan_arsenal_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_taiyuan_arsenal_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_taiyuan_arsenal_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = { 
+				has_country_flag = CHI_taiyuan_arsenal_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_taiyuan_arsenal_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_taiyuan_arsenal_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_taiyuan_arsenal_organization_flag}
+					clr_state_flag = CHI_taiyuan_arsenal_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_taiyuan_arsenal_organization_flag }
+		}
+	}
+	KMT_invest_into_china_automobile_corporation_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_china_automobile_corporation_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_china_automobile_corporation_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_china_automobile_corporation_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_china_automobile_corporation_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_china_automobile_corporation_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_china_automobile_corporation_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_china_automobile_corporation_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_china_automobile_corporation_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_china_automobile_corporation_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_china_automobile_corporation_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_china_automobile_corporation_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_china_automobile_corporation_organization_flag}
+					clr_state_flag = CHI_china_automobile_corporation_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_china_automobile_corporation_organization_flag }
+		}
+	}
+	KMT_select_hanyan_arsenal_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					593 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					594 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					715 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					328 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					943 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					1120 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					613 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					1115 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					600 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					602 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					608 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					744 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+					1117 = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_hanyan_arsenal_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_hanyan_arsenal_organization_flag
+					}
+					custom_effect_tooltip = CHI_hanyan_arsenal_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_hanyan_arsenal_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_hanyan_arsenal_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_hanyan_arsenal_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_hanyan_arsenal_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_hanyan_arsenal_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_hanyan_arsenal_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_hanyan_arsenal_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_hanyan_arsenal_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_hanyan_arsenal_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_hanyan_arsenal_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_hanyan_arsenal_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_hanyan_arsenal_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_hanyan_arsenal_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_hanyan_arsenal_organization_flag}
+					clr_state_flag = CHI_hanyan_arsenal_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_hanyan_arsenal_organization_flag }
+		}
+	}
+	KMT_select_sinaw_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_sinaw_organization_flag }
+					593 = { has_state_flag = CHI_sinaw_organization_flag }
+					594 = { has_state_flag = CHI_sinaw_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_sinaw_organization_flag }
+					715 = { has_state_flag = CHI_sinaw_organization_flag }
+					328 = { has_state_flag = CHI_sinaw_organization_flag }
+					943 = { has_state_flag = CHI_sinaw_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_sinaw_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_sinaw_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_sinaw_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_sinaw_organization_flag }
+					1120 = { has_state_flag = CHI_sinaw_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_sinaw_organization_flag }
+					613 = { has_state_flag = CHI_sinaw_organization_flag }
+					1115 = { has_state_flag = CHI_sinaw_organization_flag }
+					600 = { has_state_flag = CHI_sinaw_organization_flag }
+					602 = { has_state_flag = CHI_sinaw_organization_flag }
+					608 = { has_state_flag = CHI_sinaw_organization_flag }
+					744 = { has_state_flag = CHI_sinaw_organization_flag }
+					1117 = { has_state_flag = CHI_sinaw_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_sinaw_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_sinaw_organization_flag
+					}
+					custom_effect_tooltip = CHI_sinaw_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_sinaw_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_sinaw_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_sinaw_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_sinaw_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_sinaw_organization_sea = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_sinaw_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_sinaw_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_sinaw_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_sinaw_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_sinaw_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_sinaw_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_sinaw_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_sinaw_organization_sea = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_sinaw_organization_flag}
+					clr_state_flag = CHI_sinaw_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_sinaw_organization_flag }
+		}
+	}
+	KMT_select_shaoguan_aircraft_manufacturing_factory_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					593 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					594 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					715 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					328 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					943 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					1120 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					613 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					1115 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					600 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					602 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					608 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					744 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+					1117 = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+					}
+					custom_effect_tooltip = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_shaoguan_aircraft_manufacturing_factory_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_shaoguan_aircaft_manufacturing_factory_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_shaoguan_aircraft_manufacturing_factory_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = { 
+				has_country_flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_shaoguan_aircraft_manufacturing_factory_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_shaoguan_aircaft_manufacturing_factory_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag}
+					clr_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag }
+		}
+	}
+	KMT_select_central_nachang_aircraft_manufacturing_factory_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					593 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					594 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					715 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					328 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					943 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					1120 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					613 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					1115 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					600 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					602 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					608 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					744 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+					1117 = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+					}
+					custom_effect_tooltip = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_central_nachang_aircraft_manufacturing_factory_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_central_nachang_aircraft_manufacturing_factory_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_central_nachang_aircraft_manufacturing_factory_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_selected_flag
+				is_ai = yes
+			}
+		
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_central_nachang_aircraft_manufacturing_factory_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag}
+					clr_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag }
+		}
+	}
+	KMT_select_naval_air_establishment_shanghai_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					593 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					594 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					715 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					328 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					943 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					1120 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					613 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					1115 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					600 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					602 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					608 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					744 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+					1117 = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+					}
+					custom_effect_tooltip = CHI_naval_air_establishment_shanghai_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_naval_air_establishment_shanghai_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_naval_air_establishment_shanghai_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_naval_air_establishment_shanghai_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_naval_air_establishment_shanghai_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_naval_air_establishment_shanghai_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_naval_air_establishment_shanghai_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_naval_air_establishment_shanghai_organization_selected_flag
+				is_ai = yes 
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_naval_air_establishment_shanghai_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_naval_air_establishment_shanghai_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag}
+					clr_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_naval_air_establishment_shanghai_organization_flag }
+		}
+	}
+	KMT_select_chengdu_aviation_research_institute_organization_dec = {
+		icon = GFX_decision_generic_merge_plant_aircraft
+		visible = {
+			NOT = {
+				r56_china_has_mio_selected = yes
+			}
+			IF = {
+				limit = {
+					has_country_flag = r56_chinese_gui_guangxi_selected
+				}
+				OR = {
+					592 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					593 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					594 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_manchuria_selected
+				}
+				OR = {
+					716 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					715 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					328 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					943 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = r56_chinese_gui_hebei_selected }
+				745 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_shanxi_selected
+				}
+				615 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_yunnan_selected
+				}
+				325 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_sichuan_selected
+				}
+				OR = {
+					1116 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					1120 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = r56_chinese_gui_central_china_selected
+				}
+				OR = {
+					1114 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					613 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					1115 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					600 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					602 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					608 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					744 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+					1117 = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+				}
+			}
+			else = { always = no }
+		}
+		available = {
+			any_controlled_state = {
+				has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+			}
+		}
+		complete_effect = {
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+					}
+					custom_effect_tooltip = CHI_chengdu_aviation_research_institute_organization_flag
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_country_flag = CHI_chengdu_aviation_research_institute_organization_selected_flag
+			custom_effect_tooltip = KMT_mio_dec_tt
+		}
+	}
+	KMT_invest_into_chengdu_aviation_research_institute_organization = {
+		icon = GFX_decision_gre_investment_decisions
+		visible = {
+			is_ai = no
+			has_country_flag = CHI_chengdu_aviation_research_institute_organization_selected_flag
+			any_controlled_state = {
+				has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+			}
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		days_re_enable = 75
+		custom_cost_trigger = {
+			check_variable = {
+				var = KMT_eco_total
+				value = 750
+				compare = greater_than_or_equals
+			}
+		}
+		custom_cost_text = decision_cost_KMT_funds_750
+		complete_effect = {
+			add_to_variable = {
+				var = KMT_eco_total
+				value = -750
+			}
+			mio:CHI_chengdu_aviation_research_institute_organization = {
+				add_mio_size = 1
+				add_mio_funds_gain_factor = 0.05
+				add_mio_research_bonus = 0.03
+			}
+		}
+	}
+	KMT_move_the_chengdu_aviation_research_institute_organization_to_FROM = {
+		icon = GFX_decision_generic_trucks
+		custom_cost_trigger = {
+			command_power > 10
+		}
+		custom_cost_text = decision_cost_CP_10
+		ai_will_do = {
+			base = 0
+			modifier = {
+				FROM = {
+					NOT = {
+						any_neighbor_state = {
+							controller = {
+								has_war_with = ROOT
+							}
+						}
+					}
+				}
+				any_state = {
+					controller = {
+						has_war_with = ROOT
+					}
+					any_neighbor_state = {
+						has_state_flag = CHI_shanghai_arsenal_flag
+					}
+				}
+				add = 100
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					any_controlled_state = {
+						has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+					}
+				}
+				FROM = {
+					NOT = {
+						is_controlled_by = ROOT
+						controller = { is_ally_with = ROOT}
+						controller = { is_subject_of = ROOT }
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ROOT
+					controller = { is_ally_with = ROOT}
+					controller = { is_subject_of = ROOT }
+				}
+				NOT = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
+			}
+		}
+		target_root_trigger = {
+			any_controlled_state = {
+				has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+			}
+		}
+		available = {
+			NOT = { has_country_flag = CHI_chengdu_aviation_research_institute_organization_moving }
+			IF = {
+				limit = { original_tag = CHI}
+				has_completed_focus = KMT_industrial_evacuations
+			}
+			has_war = yes
+			FROM = {
+				custom_trigger_tooltip = {
+					tooltip = KMT_less_than_three_things_here
+					NOT = {
+						count_triggers = {
+							amount = 3
+							has_state_flag = CHI_shanghai_arsenal_flag
+							has_state_flag = CHI_liaoning_arsenal_organization_flag
+							has_state_flag = CHI_jinling_arsenal_organization_flag
+							has_state_flag = CHI_kiangnan_shipyard_group_organization_flag
+							has_state_flag = CHI_dagu_shipyard_organization_flag
+							has_state_flag = CHI_sinaw_organization_flag
+							has_state_flag = CHI_mukden_arsenal_organization_flag
+							has_state_flag = CHI_taiyuan_arsenal_organization_flag
+							has_state_flag = CHI_china_automobile_corporation_organization_flag
+							has_state_flag = CHI_hanyan_arsenal_organization_flag
+							has_state_flag = CHI_taku_shipyard_organization_flag
+							has_state_flag = CHI_dalian_shipyard_organzation_flag
+							has_state_flag = CHI_shaoguan_aircaft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_central_nachang_aircraft_manufacturing_factory_organization_flag
+							has_state_flag = CHI_naval_air_establishment_shanghai_organization_flag
+							has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+		visible = {
+			OR = {
+				has_country_flag = CHI_chengdu_aviation_research_institute_organization_selected_flag
+				is_ai = yes
+			}
+		}
+		state_target = yes
+		fire_only_once = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 744 328 602 644 1114 1115 608 600 716 943 1117 615 1116 325 1120 613 592 594 }
+		days_remove = 25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			set_country_flag = {
+				flag = CHI_chengdu_aviation_research_institute_organization_moving
+				value = 1
+				days = 25
+			}
+		}
+		remove_effect = {
+			mio:CHI_chengdu_aviation_research_institute_organization = {
+				add_mio_funds = -500
+			}
+			hidden_effect = {
+				every_state = {
+					limit = { has_state_flag = CHI_chengdu_aviation_research_institute_organization_flag}
+					clr_state_flag = CHI_chengdu_aviation_research_institute_organization_flag
+				}
+			}
+			FROM = { custom_effect_tooltip = CHI_mio_moves_here_tt set_state_flag = CHI_chengdu_aviation_research_institute_organization_flag }
 		}
 	}
 }
@@ -106,14 +4761,14 @@ CHI_move_capital_warlord= {
 		}
 		cost = 10
 		visible = {
-			613 = {
+			1114 = {
 				is_fully_controlled_by = ROOT
 			}
 		}
 		complete_effect = {
 			set_country_flag = CHI_capital_set_flag
 			set_capital = {
-				state = 613
+				state = 1114
 				remember_old_capital = no
 			}
 		}
